@@ -4,22 +4,23 @@
  **************************************************************
  Server version 4.0.13-standard-log
  */
+create database carmet;
 USE carmet;
 -- Accessing the DB 
 CREATE TABLE IF NOT EXISTS USER (
-  userID INT,
+  userID MEDIUMINT NOT NULL AUTO_INCREMENT,
   username VARCHAR(50) NOT NULL,
   userEmail VARCHAR(320) NOT NULL,
   userPassword VARCHAR(100) NOT NULL,
-  registrationDate DATE,
+  registrationDate DATE DEFAULT GETDATE(),
   phoneNumber DECIMAL(11, 0) CHECK(
     phoneNumber BETWEEN 1 AND 99999999999
   ),
   PRIMARY KEY (userID)
 );
 CREATE TABLE IF NOT EXISTS SUPPLIER (
-  supplierID VARCHAR(6),
-  userID INT,
+  supplierID MEDIUMINT NOT NULL AUTO_INCREMENT,
+  userID MEDIUMINT,
   address VARCHAR(300) NOT NULL,
   transactionCount DECIMAL(6, 0) CHECK(
     transactionCount BETWEEN 1 AND 999999
@@ -28,8 +29,8 @@ CREATE TABLE IF NOT EXISTS SUPPLIER (
   PRIMARY KEY (supplierID)
 );
 CREATE TABLE IF NOT EXISTS CUSTOMER (
-  customerID VARCHAR(6),
-  userID INT,
+  customerID MEDIUMINT NOT NULL AUTO_INCREMENT,
+  userID MEDIUMINT,
   purchaseCount DECIMAL(6, 0) CHECK(
     purchaseCount BETWEEN 1 AND 999999
   ),
@@ -40,16 +41,16 @@ CREATE TABLE IF NOT EXISTS CUSTOMER (
   PRIMARY KEY (customerID)
 );
 CREATE TABLE IF NOT EXISTS CARMAKE (
-  carMakeID VARCHAR(6),
+  carMakeID MEDIUMINT NOT NULL AUTO_INCREMENT,
   makeName VARCHAR(50),
   model VARCHAR(50),
   modelYear YEAR,
   PRIMARY KEY (carMakeID)
 );
 CREATE TABLE IF NOT EXISTS CAR (
-  carID VARCHAR(6),
-  carMakeID VARCHAR(6),
-  userID INT,
+  carID MEDIUMINT NOT NULL AUTO_INCREMENT,
+  carMakeID MEDIUMINT,
+  userID MEDIUMINT,
   color VARCHAR(20) NOT NULL,
   price DECIMAL(7, 0) CHECK (
     price BETWEEN 1 AND 9999999
@@ -62,54 +63,54 @@ CREATE TABLE IF NOT EXISTS CAR (
   PRIMARY KEY (carID)
 );
 CREATE TABLE IF NOT EXISTS ORDERS (
-  orderID DECIMAL(8, 0),
+  orderID MEDIUMINT NOT NULL AUTO_INCREMENT,
   date DATE,
   status VARCHAR(50),
   totalAmount DECIMAL(10, 2),
   PRIMARY KEY (orderID)
 );
 CREATE TABLE IF NOT EXISTS PART (
-  partID VARCHAR(6),
+  partID MEDIUMINT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255),
   description VARCHAR(255),
   price DECIMAL(10, 2),
   inStockQty DECIMAL(4, 0),
-  supplierID VARCHAR(6),
+  supplierID MEDIUMINT,
   PRIMARY KEY (partID),
   FOREIGN KEY (supplierID) REFERENCES SUPPLIER(supplierID)
 );
 CREATE TABLE IF NOT EXISTS REVIEW (
-  reviewID VARCHAR(6),
+  reviewID MEDIUMINT NOT NULL AUTO_INCREMENT,
   rating DECIMAL(1, 0) CHECK (
     rating BETWEEN 0 AND 5
   ),
   comment VARCHAR(200),
   reviewDate DATE,
-  supplierID VARCHAR(6),
+  supplierID MEDIUMINT,
   PRIMARY KEY (reviewID),
   FOREIGN KEY (supplierID) REFERENCES SUPPLIER(supplierID)
 );
 CREATE TABLE IF NOT EXISTS WORKSON (
-  partID VARCHAR(6),
-  carMakeID VARCHAR(6),
+  partID MEDIUMINT,
+  carMakeID MEDIUMINT,
   PRIMARY KEY (partID),
   FOREIGN KEY (carMakeID) REFERENCES CARMAKE(carMakeID),
   FOREIGN KEY (partID) REFERENCES PART(partID)
 );
 CREATE TABLE IF NOT EXISTS LEAVES (
-  customerID VARCHAR(6),
-  reviewID VARCHAR(6),
-  supplierID VARCHAR(6),
+  customerID MEDIUMINT,
+  reviewID MEDIUMINT,
+  supplierID MEDIUMINT,
   PRIMARY KEY (customerID, reviewID, supplierID),
   FOREIGN KEY (customerID) REFERENCES CUSTOMER(customerID),
   FOREIGN KEY (reviewID) REFERENCES REVIEW(reviewID),
   FOREIGN KEY (supplierID) REFERENCES SUPPLIER(supplierID)
 );
 CREATE TABLE IF NOT EXISTS PARTORDER (
-  customerID VARCHAR(6),
-  supplierID VARCHAR(6),
-  partID VARCHAR(6),
-  orderID DECIMAL(8, 0),
+  customerID MEDIUMINT,
+  supplierID MEDIUMINT,
+  partID MEDIUMINT,
+  orderID MEDIUMINT,
   PRIMARY KEY (customerID, supplierID, partID, orderID),
   FOREIGN KEY (orderID) REFERENCES ORDERS(orderID),
   FOREIGN KEY (customerID) REFERENCES CUSTOMER(customerID),
@@ -117,10 +118,10 @@ CREATE TABLE IF NOT EXISTS PARTORDER (
   FOREIGN KEY (partID) REFERENCES PART(partID)
 );
 CREATE TABLE IF NOT EXISTS CARORDER (
-  customerID VARCHAR(6),
-  supplierID VARCHAR(6),
-  carID VARCHAR(6),
-  orderID DECIMAL(8, 0),
+  customerID MEDIUMINT,
+  supplierID MEDIUMINT,
+  carID MEDIUMINT,
+  orderID MEDIUMINT,
   PRIMARY KEY (customerID, supplierID, carID, orderID),
   FOREIGN KEY (customerID) REFERENCES CUSTOMER(customerID),
   FOREIGN KEY (supplierID) REFERENCES SUPPLIER(supplierID),
