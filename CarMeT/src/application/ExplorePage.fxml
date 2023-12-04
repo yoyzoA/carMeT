@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ApplicationController">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #434343;">
+               <children>
+                  <VBox layoutX="6.0" prefHeight="620.0" prefWidth="148.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="189.0" prefWidth="160.0" style="-fx-border-color: #434343   white white  #434343; -fx-background-color: #434343;">
+                           <children>
+                              <Text fill="WHITE" layoutX="29.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CarMeT" textAlignment="CENTER" wrappingWidth="89.044921875" AnchorPane.bottomAnchor="9.82421875" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="39.955078125" AnchorPane.topAnchor="16.17578125">
+                                 <font>
+                                    <Font name="Consolas Bold" size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="644.0" prefWidth="160.0">
+                           <children>
+                              <VBox prefHeight="515.0" prefWidth="160.0" style="-fx-border-color: #434343  white  white  #434343;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#Home" prefHeight="41.0" prefWidth="152.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Home" textFill="WHITE">
+                                       <font>
+                                          <Font name="Consolas Bold" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="40.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Explore" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Consolas Bold" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="40.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#SellPage" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Sell Car" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Consolas Bold" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="40.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="92.0" mnemonicParsing="false" onAction="#MyPurchases" prefHeight="41.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="My Purchases" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Consolas Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="40.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="133.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Settings" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Consolas Bold" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="40.0" />
+                                       </padding>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="133.0" prefWidth="159.0" style="-fx-background-color: #434343; -fx-border-color: #434343  white  #434343  #434343;">
+                           <children>
+                              <Button layoutY="1.0" mnemonicParsing="false" onAction="#LogInPage" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="log in" textFill="#d7d7d7">
+                                 <font>
+                                    <Font name="Consolas Bold Italic" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </Button>
+                              <Button layoutY="34.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Switch account" textFill="#d7d7d7">
+                                 <font>
+                                    <Font name="Consolas Bold Italic" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </Button>
+                              <Button layoutY="69.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Log out" textFill="#d7d7d7">
+                                 <font>
+                                    <Font name="Consolas Bold Italic" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="10.0" left="40.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="628.0" prefWidth="1174.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox prefHeight="617.0" prefWidth="1096.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="50.0" prefWidth="1110.0" style="-fx-background-color: #434343; -fx-border-color: #434343;">
+                           <children>
+                              <HBox prefHeight="108.0" prefWidth="1096.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="59.0" prefWidth="797.0">
+                                       <children>
+                                          <TextArea layoutX="14.0" layoutY="11.0" prefHeight="38.0" prefWidth="817.0" AnchorPane.leftAnchor="14.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="70.0" prefWidth="218.0">
+                                       <children>
+                                          <Button alignment="CENTER" layoutX="10.0" layoutY="9.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="46.0" style="-fx-background-color: white; -fx-alignment: center;" />
+                                          <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../Downloads/mail.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="62.0" prefWidth="226.0">
+                                       <children>
+                                          <Button alignment="CENTER" layoutX="3.0" layoutY="9.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="42.0" style="-fx-background-color: white; -fx-alignment: center;">
+                                             <graphic>
+                                                <ImageView fitHeight="41.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../Downloads/notification%20(1).png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="62.0" prefWidth="350.0">
+                                       <children>
+                                          <Button layoutX="3.0" layoutY="9.0" mnemonicParsing="false" onAction="#Profile" prefHeight="41.0" prefWidth="160.0" style="-fx-background-color: white;" />
+                                          <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../Downloads/profile-user.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="63.0" layoutY="15.0" prefHeight="17.0" prefWidth="80.0" text="Username" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="15.0">
+                                             <font>
+                                                <Font name="Consolas Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="63.0" layoutY="33.0" prefHeight="17.0" prefWidth="80.0" text="rating" textFill="#656363">
+                                             <font>
+                                                <Font name="Consolas Italic" size="11.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="141.0" prefWidth="1110.0" style="-fx-background-color: white;">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="1096.0" text="Search by Brand">
+                                       <font>
+                                          <Font name="Consolas Bold" size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <HBox prefHeight="116.0" prefWidth="1110.0">
+                                       <children>
+                                          <AnchorPane prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="43.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;" />
+                                                <ImageView fitHeight="70.0" fitWidth="80.0" layoutX="75.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../Downloads/BMW-removebg-preview.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/Tesla-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="162.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/Mercedes-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="314.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/KIA-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="466.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/Bentley-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="618.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/Audi-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="770.0" layoutY="10.0" prefHeight="94.0" prefWidth="152.0">
+                                             <children>
+                                                <Button layoutX="40.0" layoutY="6.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="109.0" style="-fx-border-radius: 10; -fx-background-color: white;">
+                                                   <graphic>
+                                                      <ImageView fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../Downloads/Fiat-removebg-preview.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="499.0" prefWidth="1110.0" style="-fx-background-color: grey;">
+                           <children>
+                              <ScrollPane prefHeight="430.0" prefWidth="1110.0" style="-fx-border-color: #434343  white  white  white; -fx-border-width: 2 0 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1012.0" prefWidth="1154.0" style="-fx-background-color: white;">
+                                       <children>
+                                          <VBox layoutX="-1.0" prefHeight="780.0" prefWidth="1096.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <AnchorPane prefHeight="170.0" prefWidth="1134.0">
+                                                   <children>
+                                                      <HBox prefHeight="100.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="610.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="170.0" prefWidth="1134.0">
+                                                   <children>
+                                                      <HBox prefHeight="100.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="610.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="10.0" layoutY="180.0" prefHeight="170.0" prefWidth="1134.0">
+                                                   <children>
+                                                      <HBox prefHeight="100.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="610.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="10.0" layoutY="350.0" prefHeight="170.0" prefWidth="1134.0">
+                                                   <children>
+                                                      <HBox prefHeight="100.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <AnchorPane layoutX="610.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                                                                  <ImageView fitHeight="78.0" fitWidth="136.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="28.0">
+                                                                     <image>
+                                                                        <Image url="@../../../../Downloads/car-removebg-preview.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label layoutX="40.0" layoutY="89.0" prefHeight="17.0" prefWidth="120.0" text="Car Model" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="89.0">
+                                                                     <font>
+                                                                        <Font name="Consolas Bold" size="15.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <Text fill="#686565" layoutX="43.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="113.13671875" AnchorPane.bottomAnchor="42.16943359375" AnchorPane.leftAnchor="42.13671875" AnchorPane.rightAnchor="43.86328125" AnchorPane.topAnchor="116.83056640625">
+                                                                     <font>
+                                                                        <Font name="Consolas Italic" size="11.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="31.0" prefWidth="1110.0" style="-fx-background-color: #434343;" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -3,6 +3,7 @@ package application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -14,11 +15,17 @@ public class SignUpScene{
 
     @FXML
     TextField signUpUsername;
+    @FXML
     TextField signUpEmail;
+    @FXML
     TextField signUpPassword;
+    @FXML
     TextField signUpPhoneNumber;
-    private Button cancelSignUp;
+    //private Button cancelSignUp;
+    @FXML
     private Button signUpDone;
+    @FXML
+    private Button cancelSignUp;
 
 
     private Stage stage;
@@ -33,13 +40,16 @@ public class SignUpScene{
 
     public void signUpDone(ActionEvent event) throws IOException{
 
-        String username = signUpUsername.getText();
-        String email = signUpEmail.getText();
-        String password = signUpPassword.getText();
-        String phoneNumber = signUpPhoneNumber.getText();
-        System.out.println(username+password+email+phoneNumber);
-        
-       User user = new User(username,email,password,phoneNumber);
+        try {
+            String username = signUpUsername.getText();
+            String email = signUpEmail.getText();
+            String password = signUpPassword.getText();
+            String phoneNumber = signUpPhoneNumber.getText();
+            Thread.sleep(1000);
+            User user = new User(username,email,password,phoneNumber);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }{}
 
     }
 

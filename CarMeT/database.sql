@@ -9,7 +9,7 @@ USE carmet;
 -- Accessing the DB 
 CREATE TABLE IF NOT EXISTS USER (
   userID MEDIUMINT NOT NULL AUTO_INCREMENT,
-  username VARCHAR(50) NOT NULL,
+  username UNIQUE VARCHAR(50) NOT NULL,
   userEmail VARCHAR(320) NOT NULL,
   userPassword VARCHAR(100) NOT NULL,
   registrationDate DATE DEFAULT GETDATE(),

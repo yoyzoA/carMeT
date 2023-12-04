@@ -1,1 +1,20 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Style for the HomeView */
+.root {
+    -fx-background-color: #ffffff; /* Set the background color */
+}
+
+.text-field{
+	-fx-border-color: transparent transparent grey transparent;
+	-fx-border-width: 0 0 1 0;
+	-fx-border-style: none none solid none;
+	-fx-background-color: transparent;	
+
+}
+.button {
+    -fx-background-color: #FFC107;
+}
+.text-field:hover{
+     -fx-border-color: transparent transparent #FFC107 transparent;	
+     -fx-border-width: 0 0 2 0;
+     
+    }
