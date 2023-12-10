@@ -25,7 +25,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="81.0" prefWidth="400.0">
                      <children>
-                        <Text fx:id="username_text" layoutX="43.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name" wrappingWidth="161.291015625">
+                        <Text fx:id="username_text" layoutX="43.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="161.291015625">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -40,7 +40,7 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="username_textfield1" layoutX="43.0" layoutY="41.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
+                        <TextField fx:id="email_textfield" layoutX="43.0" layoutY="41.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="171.0" prefHeight="81.0" prefWidth="400.0">
@@ -50,12 +50,12 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <PasswordField layoutX="43.0" layoutY="41.0" prefHeight="25.0" prefWidth="314.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-style: none none solid none; -fx-border-color: transparent transparent grey transparent;" />
+                        <PasswordField fx:id="password_passwordfield" layoutX="43.0" layoutY="41.0" prefHeight="25.0" prefWidth="314.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-style: none none solid none; -fx-border-color: transparent transparent grey transparent;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="252.0" prefHeight="179.0" prefWidth="400.0">
                      <children>
-                        <Button layoutX="43.0" layoutY="71.0" mnemonicParsing="false" onAction="#Home" prefHeight="31.0" prefWidth="314.0" style="-fx-background-color: #ffc107;" text="Submit">
+                        <Button layoutX="43.0" layoutY="71.0" mnemonicParsing="false" onAction="#HomeSignedIn" prefHeight="31.0" prefWidth="314.0" style="-fx-background-color: #ffc107;" text="Submit">
                            <font>
                               <Font name="Consolas Bold" size="14.0" />
                            </font>

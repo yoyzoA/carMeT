@@ -17,9 +17,9 @@
                   <Font name="Consolas" size="24.0" />
                </font>
             </Text>
-            <TextField fx:id="username_textfield" layoutX="37.0" layoutY="113.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" />
-            <TextField fx:id="phonenumber_textfield" layoutX="37.0" layoutY="176.0" prefHeight="25.0" prefWidth="314.0" />
-            <TextField fx:id="email_textfield" layoutX="37.0" layoutY="237.0" prefHeight="25.0" prefWidth="314.0" />
+            <TextField fx:id="usernameSignup_textfield" layoutX="37.0" layoutY="113.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" />
+            <TextField fx:id="phonenumberSignup_textfield" layoutX="37.0" layoutY="176.0" prefHeight="25.0" prefWidth="314.0" />
+            <TextField fx:id="emailSignup_textfield" layoutX="37.0" layoutY="237.0" prefHeight="25.0" prefWidth="314.0" />
             <Text fx:id="username_text" layoutX="37.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name" wrappingWidth="161.291015625">
                <font>
                   <Font name="Consolas" size="14.0" />
@@ -40,13 +40,7 @@
                   <Font name="Consolas" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="password_text1" layoutX="37.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter Password" wrappingWidth="143.291015625">
-               <font>
-                  <Font name="Consolas" size="14.0" />
-               </font>
-            </Text>
-            <PasswordField layoutX="34.0" layoutY="309.0" prefHeight="26.0" prefWidth="314.0" />
-            <PasswordField layoutX="34.0" layoutY="366.0" prefHeight="26.0" prefWidth="314.0" />
+            <PasswordField fx:id="passwordSignup_passwordfield" layoutX="34.0" layoutY="309.0" prefHeight="26.0" prefWidth="314.0" />
             <Button fx:id="next_button" layoutX="37.0" layoutY="426.0" mnemonicParsing="false" onAction="#SignUpContinue" prefHeight="33.0" prefWidth="314.0" text="Continue">
                <font>
                   <Font name="Consolas" size="14.0" />

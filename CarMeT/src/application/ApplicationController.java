@@ -3,27 +3,57 @@ package application;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ApplicationController {
 
- private Stage stage;
- private Scene scene;
- private Parent root;
+	private Stage stage;
+	private Scene scene;
+	private Parent root;
+
+	//values of the signup page
+	@FXML	
+	TextField usernameSignup_textfield;
+	@FXML
+	TextField phonenumberSignup_textfield;
+	@FXML
+	TextField emailSignup_textfield;
+	@FXML
+	PasswordField passwordSignup_passwordfield;
+
+	@FXML
+	TextField username_textfield;
+	@FXML
+	TextField email_textfield;
+	@FXML
+	PasswordField password_passwordfield;
  
- public void SignUpContinue(ActionEvent event) throws IOException {
-  root = FXMLLoader.load(getClass().getResource("SignUpContinuePage.fxml"));
-  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-  scene = new Scene(root);
-  String css = this.getClass().getResource("application.css").toExternalForm();
-  scene.getStylesheets().add(css);
-  stage.setScene(scene);
-  stage.show();
- }
+	public void SignUpContinue(ActionEvent event) throws IOException {
+		try {
+            String username = usernameSignup_textfield.getText();
+            String email = emailSignup_textfield.getText();
+            String password = passwordSignup_passwordfield.getText();
+            String phoneNumber = phonenumberSignup_textfield.getText();
+            Thread.sleep(1000);
+            User user = new User(username,email,password,phoneNumber);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }{}
+		root = FXMLLoader.load(getClass().getResource("SignUpContinuePage.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		stage.setScene(scene);
+		stage.show();
+	}
  
  public void Home(ActionEvent event) throws IOException {
 	  Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -32,6 +62,31 @@ public class ApplicationController {
 	  String css = this.getClass().getResource("application.css").toExternalForm();
 	  stage.setScene(scene);
 	  stage.show();
+	 }
+
+	  public void HomeSignedIn(ActionEvent event) throws IOException {
+		while(true){
+			try {
+			User user = new User();
+			
+            String username = username_textfield.getText();
+            String email = email_textfield.getText();
+            String password = password_passwordfield.getText();
+			user.userSignIn(username,password,email);
+            Thread.sleep(1000);
+			if(user.userID==0){
+				return;
+			}
+            break;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }{}}
+		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm();
+		stage.setScene(scene);
+		stage.show();
 	 }
  
  public void Explore(ActionEvent event) throws IOException {
@@ -117,3 +172,4 @@ public class ApplicationController {
 	  stage.show();
 	 }
 	}
+
