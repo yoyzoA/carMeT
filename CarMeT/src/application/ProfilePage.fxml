@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="88.0" fitWidth="87.0" layoutX="144.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/user%20(1).png" />
+                        <Image url="@images/user (1).png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="74.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100 Orders" wrappingWidth="109.13671875">
@@ -96,7 +96,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="10.0" layoutY="330.0" prefHeight="80.0" prefWidth="385.0" style="-fx-background-color: white;">
                                        <children>
-                                          <Button fx:id="next_button" mnemonicParsing="false" onAction="#Home" prefHeight="32.0" prefWidth="314.0" text="Done" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                          <Button fx:id="next_button" mnemonicParsing="false" onAction="#Home" prefHeight="32.0" prefWidth="314.0" style="-fx-background-color: #FFC107;" text="Done" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                              <font>
                                                 <Font name="Consolas" size="14.0" />
                                              </font>

@@ -8,33 +8,59 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #434343;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ApplicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="408.0" style="-fx-background-color: #434343;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ApplicationController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane prefHeight="71.0" prefWidth="360.0">
                      <children>
-                        <AnchorPane prefHeight="106.0" prefWidth="360.0" style="-fx-background-color: #ffc107;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                           <children>
-                              <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sell Car" wrappingWidth="275.13671875">
-                                 <font>
-                                    <Font name="Consolas Bold" size="26.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="80.0" prefWidth="385.0" style="-fx-background-color: white;">
-                     <children>
-                        <TextField fx:id="username_textfield" layoutX="31.0" layoutY="31.0" opacity="0.88" prefHeight="26.0" prefWidth="321.0" scaleShape="false" style="-fx-border-color: transparent transparent grey transparent; -fx-border-width: 0 0 1 0; -fx-border-style: none none solid none; -fx-background-color: transparent;" />
-                        <Text fx:id="username_text" layoutX="31.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car Brand" wrappingWidth="161.291015625">
+                        <Text fx:id="signup_text" layoutX="23.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sell Car" wrappingWidth="188.0">
                            <font>
-                              <Font name="Consolas Bold" size="14.0" />
+                              <Font name="Consolas" size="24.0" />
                            </font>
                         </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="65.0" prefWidth="388.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text fx:id="username_text4" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car Make" wrappingWidth="161.291015625">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="username_textfield3" layoutX="26.0" layoutY="28.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="65.0" prefWidth="388.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text fx:id="username_text2" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color" wrappingWidth="161.291015625">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="username_textfield1" layoutX="26.0" layoutY="28.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="65.0" prefWidth="388.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text fx:id="username_text3" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Odometer" wrappingWidth="161.291015625">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="username_textfield2" layoutX="26.0" layoutY="28.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="65.0" prefWidth="388.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text fx:id="username_text" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="161.291015625">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="username_textfield" layoutX="26.0" layoutY="28.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="81.0" prefHeight="309.0" prefWidth="360.0" style="-fx-background-color: white;">
@@ -45,7 +71,7 @@
                            </font>
                         </Text>
                         <TextArea layoutX="29.0" layoutY="30.0" prefHeight="175.0" prefWidth="305.0" />
-                        <Button layoutX="256.0" layoutY="238.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Submit">
+                        <Button layoutX="267.0" layoutY="239.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Sell">
                            <font>
                               <Font name="Consolas Bold" size="13.0" />
                            </font>
