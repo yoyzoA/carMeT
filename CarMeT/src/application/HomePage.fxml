@@ -119,7 +119,7 @@
                                     <Insets left="40.0" />
                                  </padding>
                               </Button>
-                              <Button fx:id="Logout_Button" layoutY="69.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Log out" textFill="#d7d7d7">
+                              <Button fx:id="Logout_Button" layoutY="69.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Log out" textFill="#d7d7d7">
                                  <font>
                                     <Font name="Consolas Bold Italic" size="12.0" />
                                  </font>
