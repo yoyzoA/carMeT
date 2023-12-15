@@ -7,14 +7,13 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ApplicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExplorePageController">
 
    <children>
       <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -195,12 +194,7 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="81.0" prefWidth="400.0">
-                     <children>   
-                        <TextField fx:id="search_textfield" promptText="ex. Honda" layoutX="22.0" layoutY="20.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" style="-fx-background-color: transparent; -fx-border-color: grey grey grey grey; -fx-border-style: solid solid solid solid; -fx-border-width: 1 1 1 1;" />
-                     </children>
-                     
-                  </AnchorPane>
+                        
                         <AnchorPane prefHeight="141.0" prefWidth="1110.0" style="-fx-background-color: white;">
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -218,8 +212,8 @@
                                        <children>
                                           <AnchorPane prefHeight="94.0" prefWidth="152.0">
                                              <children>
-                                                <Button fx:id="BMW_Button" mnemonicParsing="false" prefHeight="100.0" prefWidth="152.0" style="-fx-border-radius: 5; -fx-background-color: white;" />
-                                                <ImageView fitHeight="70.0" fitWidth="80.0" layoutX="41.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                <Button fx:id="BMW_Button" mnemonicParsing="false" onAction="#ExploreBMW" prefHeight="100.0" prefWidth="152.0" style="-fx-border-radius: 5; -fx-background-color: white;" />
+                                                <ImageView fitHeight="70.0" fitWidth="89.0" layoutX="41.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@images/BMW.png" />
                                                    </image>
