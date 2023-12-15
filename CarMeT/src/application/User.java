@@ -44,23 +44,24 @@ public class User{
             connection = DriverManager.getConnection(url, username0, password);
             String sql = "SELECT userID FROM user WHERE username IN (\""+username+"\") AND userPassword IN(\""+userPassword+"\") AND userEmail IN (\""+userEmail+"\");";
             preparedStatement = connection.prepareStatement(sql);
-
             // Execute the query and get the result set
             resultSet = preparedStatement.executeQuery();
+            System.out.println("uh i think this is the");    
 
             // Process the result set
             while (resultSet.next()) {
                 // Retrieve values from the result set
-                this.userID= Integer.parseInt(resultSet.getString("userID"));
+                this.userID= resultSet.getInt("userID");
             }
 
             if(this.userID==0){
+                System.out.println("userID is 0!!!!!!!!!!!!!!!!!");
                 throw new Exception();
             }
             connection.close();
            
         } catch (Exception e) {
-
+            e.getStackTrace();
             System.out.println("wrong username or password");
             
 

@@ -19,17 +19,19 @@ public class SellCar {
         try {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
-
-            String sql = "INSERT INTO CAR (userID,carMakeID,color,price,vin,carDescription,odometer) VALUES ("+userID+","+carMakeID+",\'"+color+"\'',"+price+","+vin+"\",\'"+description+"\',"+"\","+odometer+")";
+            System.out.println("------------------"+userID);
+            getCarMakeID(carMake);
+            String sql = "INSERT INTO CAR (userID,carMakeID,color,price,vin,carDescription,odometer) VALUES ("+userID+","+carMakeID+",\'"+color+"\',"+price+",\""+vin+"\",\'"+description+"\',"+odometer+");";
             statement.execute(sql);
 
             connection.close();
         } catch (Exception e) {
 
-            System.out.println(e);
+            System.out.println("error in constructor");
+            e.printStackTrace();
         }
     }
-    public void getCarMakeID(String username,String userPassword,String userEmail){
+    public void getCarMakeID(String carMake){
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -51,6 +53,8 @@ public class SellCar {
             while (resultSet.next()) {
                 // Retrieve values from the result set
                 this.carMakeID= Integer.parseInt(resultSet.getString("carMakeID"));
+                System.out.println("------------------"+carMakeID);
+                
             }
 
             if(this.carMakeID==0){
@@ -59,7 +63,7 @@ public class SellCar {
             connection.close();
            
         } catch (Exception e) {
-
+            System.out.println("error in getcarmake");
         }
     }
 }

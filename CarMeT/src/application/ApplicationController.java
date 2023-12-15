@@ -24,7 +24,7 @@ public class ApplicationController /*implements Initializable*/{
 	private Stage stage;
 	private Scene scene;
 	public Parent root;
-	int userID = 0;
+	public static int userID = 0;
 
 	// values of the signup page
 	@FXML
@@ -44,25 +44,24 @@ public class ApplicationController /*implements Initializable*/{
 	@FXML
 	PasswordField password_passwordfield;
 
-	//Sell car page
-	ObservableList <String> carMakeKList=FXCollections.observableArrayList("Audi","Bentley","BMW","Fiat","Kia","Mercedes","Tesla");
-	String carm;
-	@FXML
-	TextField carColor_textfield;
-	@FXML
-	TextField odometer_textfield;
-	@FXML
-	TextField price_textfield;
-	@FXML
-	TextField vin_textfield;
-	@FXML
-	TextArea description_text;
-	@FXML
-	private ChoiceBox<String> carMakeCB;
+	// //Sell car page
+	// String carm;
+	// @FXML
+	// TextField carColor_textfield;
+	// @FXML
+	// TextField odometer_textfield;
+	// @FXML
+	// TextField price_textfield;
+	// @FXML
+	// TextField vin_textfield;
+	// @FXML
+	// TextArea description_text;
+	// @FXML
+	// private ChoiceBox <String> carMakeCB;
 
 	// @FXML
 	// public void initialize(URL location, ResourceBundle resources) {
-	// 	carMakeCB.setItems(carMakeKList);
+	// 	carMakeCB.getItems().addall("Audi","Bentley","BMW","Fiat","Kia","Mercedes","Tesla");
 	// 	carMakeCB.setValue("BMW");
 	// 	carMakeCB.setOnAction(this::getCarMake);
 		
@@ -83,27 +82,27 @@ public class ApplicationController /*implements Initializable*/{
 		stage.show();
 	}
 
-	public void HomeSellCar(ActionEvent event) throws IOException {
-		try {
-			String carMake = carm;
-			String color = carColor_textfield.getText();
-			String odometer = odometer_textfield.getText();
-			String price = price_textfield.getText();
-			String vin=vin_textfield.getText();
-			String description = description_text.getText();
-			Thread.sleep(1000);
-			SellCar carsell = new SellCar(userID, carMake, color, odometer,price,vin,description);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		String css = this.getClass().getResource("HomePage.css").toExternalForm();
-		scene.getStylesheets().add(css);
-		stage.setScene(scene);
-		stage.show();
-	}
+	// public void HomeSellCar(ActionEvent event) throws IOException {
+	// 	try {
+	// 		String carMake = carm;
+	// 		String color = carColor_textfield.getText();
+	// 		String odometer = odometer_textfield.getText();
+	// 		String price = price_textfield.getText();
+	// 		String vin=vin_textfield.getText();
+	// 		String description = description_text.getText();
+	// 		Thread.sleep(1000);
+	// 		SellCar carsell = new SellCar(userID, carMake, color, odometer,price,vin,description);
+	// 	} catch (Exception e) {
+	// 		e.printStackTrace();
+	// 	}
+	// 	Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+	// 	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	// 	scene = new Scene(root);
+	// 	String css = this.getClass().getResource("HomePage.css").toExternalForm();
+	// 	scene.getStylesheets().add(css);
+	// 	stage.setScene(scene);
+	// 	stage.show();
+	// }
 
 	public void SignOut(ActionEvent event) throws IOException {
 		userID = 0;
@@ -148,12 +147,15 @@ public class ApplicationController /*implements Initializable*/{
 				String email = email_textfield.getText();
 				String password = password_passwordfield.getText();
 				user.userSignIn(username, password, email);
+				userID = user.getuserID();
+				System.out.println("please this "+userID);
 				Thread.sleep(1000);
 
-				if (user.userID == 0) {
+				if (userID == 0) {
 					return;
 				} else {
-					userID = user.getuserID();
+					
+					System.out.println("please this "+userID);
 					break;
 				}
 
