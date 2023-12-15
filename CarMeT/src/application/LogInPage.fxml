@@ -50,12 +50,12 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <PasswordField fx:id="password_passwordfield" layoutX="43.0" layoutY="41.0" prefHeight="25.0" prefWidth="314.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-style: none none solid none; -fx-border-color: transparent transparent grey transparent;" />
+                        <PasswordField layoutX="43.0" layoutY="41.0" prefHeight="25.0" prefWidth="314.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-style: none none solid none; -fx-border-color: transparent transparent grey transparent;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="252.0" prefHeight="179.0" prefWidth="400.0">
                      <children>
-                        <Button layoutX="43.0" layoutY="71.0" mnemonicParsing="false" onAction="#HomeSignedIn" prefHeight="31.0" prefWidth="314.0" style="-fx-background-color: #ffc107;" text="Submit">
+                        <Button layoutX="43.0" layoutY="71.0" mnemonicParsing="false" onAction="#Home" prefHeight="31.0" prefWidth="314.0" style="-fx-background-color: #ffc107;" text="Submit">
                            <font>
                               <Font name="Consolas Bold" size="14.0" />
                            </font>

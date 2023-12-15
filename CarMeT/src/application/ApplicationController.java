@@ -1,22 +1,30 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ApplicationController {
+public class ApplicationController /* implements Initializable */ {
 
 	private Stage stage;
 	private Scene scene;
-	private Parent root;
+	public Parent root;
+	int userID = 0;
 
 	// values of the signup page
 	@FXML
@@ -28,6 +36,7 @@ public class ApplicationController {
 	@FXML
 	PasswordField passwordSignup_passwordfield;
 
+	// sign in page
 	@FXML
 	TextField username_textfield;
 	@FXML
@@ -51,7 +60,7 @@ public class ApplicationController {
 		root = FXMLLoader.load(getClass().getResource("SignUpContinuePage.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
-		String css = this.getClass().getResource("application.css").toExternalForm();
+		String css = this.getClass().getResource("HomePage.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		stage.setScene(scene);
 		stage.show();
@@ -98,12 +107,10 @@ public class ApplicationController {
 		Parent root = FXMLLoader.load(getClass().getResource("ExplorePage.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
-
 		String css = this.getClass().getResource("application.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		stage.setScene(scene);
 		stage.show();
-
 	}
 
 	public void Profile(ActionEvent event) throws IOException {

@@ -1,0 +1,64 @@
+
+#Home_Button{
+	-fx-text-fill: #FFC107;
+	-fx-border-color: transparent transparent transparent #FFC107;
+	-fx-border-width: 0 0 0 3;
+}
+#Explore_Button{
+	-fx-text-fill: white;
+}
+#Explore_Button:hover{
+	-fx-text-fill: #FFC107;
+}
+#Sell_Button{
+	-fx-text-fill: white;
+}
+#Sell_Button:hover{
+	-fx-text-fill: #FFC107;
+}
+#Purchases_Button{
+	-fx-text-fill: white;
+}
+#Purchases_Button:hover{
+	-fx-text-fill: #FFC107;
+}
+#Settings_Button{
+	-fx-text-fill: white;
+}
+#Settings_Button:hover{
+	-fx-text-fill: #FFC107;
+}
+#Login_Button{
+	-fx-text-fill: white;
+}
+#Login_Button:hover{
+	-fx-text-fill: #FFC107;
+	-fx-border-color: transparent transparent transparent #FFC107;
+	-fx-border-width: 0 0 0 3;
+}
+#Switch_Button{
+	-fx-text-fill: white;
+}
+#Switch_Button:hover{
+	-fx-text-fill: #FFC107;
+	-fx-border-color: transparent transparent transparent #FFC107;
+	-fx-border-width: 0 0 0 3;
+}
+#Logout_Button{
+	-fx-text-fill: white;
+}
+#Logout_Button:hover{
+	-fx-text-fill: #FFC107;
+	-fx-border-color: transparent transparent transparent #FFC107;
+	-fx-border-width: 0 0 0 3;
+}
+
+#Signup_Button:hover{
+	-fx-text-fill: #FFC107;
+}
+#Review_Button{
+	-fx-text-fill: white;
+}
+#Review_Button:hover{
+	-fx-text-fill: #FFC107;
+}

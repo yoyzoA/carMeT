@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +21,7 @@
             <TextField fx:id="usernameSignup_textfield" layoutX="37.0" layoutY="113.0" opacity="0.88" prefHeight="25.0" prefWidth="314.0" scaleShape="false" />
             <TextField fx:id="phonenumberSignup_textfield" layoutX="37.0" layoutY="176.0" prefHeight="25.0" prefWidth="314.0" />
             <TextField fx:id="emailSignup_textfield" layoutX="37.0" layoutY="237.0" prefHeight="25.0" prefWidth="314.0" />
-            <Text fx:id="username_text" layoutX="37.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name" wrappingWidth="161.291015625">
+            <Text fx:id="username_text" layoutX="37.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="161.291015625">
                <font>
                   <Font name="Consolas" size="14.0" />
                </font>
@@ -41,11 +42,12 @@
                </font>
             </Text>
             <PasswordField fx:id="passwordSignup_passwordfield" layoutX="34.0" layoutY="309.0" prefHeight="26.0" prefWidth="314.0" />
-            <Button fx:id="next_button" layoutX="37.0" layoutY="426.0" mnemonicParsing="false" onAction="#SignUpContinue" prefHeight="33.0" prefWidth="314.0" text="Continue">
+            <Button fx:id="next_button" layoutX="37.0" layoutY="426.0" mnemonicParsing="false" onAction="#HomeSignUp" prefHeight="33.0" prefWidth="314.0" text="Done">
                <font>
                   <Font name="Consolas" size="14.0" />
                </font>
             </Button>
+            <CheckBox layoutX="35.0" layoutY="364.0" mnemonicParsing="false" text="Terms of Service Agreement" textFill="#837a7a" />
          </children>
       </Pane>
    </children>
