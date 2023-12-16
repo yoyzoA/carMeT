@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class SellCarController implements Initializable {
 	private Scene scene;
 	public Parent root;
 
-    
+    Preferences userPreferences=Preferences.userRoot();
     ApplicationController appc=new ApplicationController();
     
     public void HomeSellCar(ActionEvent event) throws IOException {
@@ -48,7 +49,7 @@ public class SellCarController implements Initializable {
 			String vin=vin_textfield.getText();
 			String description = description_text.getText();
 			Thread.sleep(1000);
-            int userID=ApplicationController.userID;
+            int userID=userPreferences.getInt("userID",0);
 			SellCar carsell = new SellCar(userID, carMake, color, odometer,price,vin,description);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +65,7 @@ public class SellCarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         carMakeCB.getItems().addAll("Audi","Bentley","BMW","Fiat","Kia","Mercedes","Tesla");
-	 	carMakeCB.setValue("BMW");
+	 	carMakeCB.setValue("Audi");
 	 	carMakeCB.setOnAction(this::getCarMake);
     }
     	public void getCarMake(ActionEvent event){

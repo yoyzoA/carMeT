@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.prefs.Preferences;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ public class SignInController {
             try {
                 Window owner = submitButton.getScene().getWindow();
                 User user = new User();
+                Preferences userPreferences=Preferences.userRoot();
                 if (email_textfield.getText().isEmpty()) {
                     showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                             "Please enter your email id");
@@ -51,6 +53,7 @@ public class SignInController {
                 String password = password_passwordfield.getText();
                 boolean flag = user.userSignIn(password, email);
                 userID = user.getuserID();
+                String username=user.getUsername();
                 System.out.println("please this " + userID);
                 Thread.sleep(1000);
 
@@ -58,6 +61,9 @@ public class SignInController {
                     infoBox("Please enter correct Email and Password", null, "Failed");
                 } else {
                     infoBox("Login Successful!", null, "Success");
+                    userPreferences.putInt("userID", userID);
+                    userPreferences.put("username", username);
+                    
                     Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);

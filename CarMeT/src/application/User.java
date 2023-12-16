@@ -13,7 +13,7 @@ public class User{
 
     }
     
-    public User(String username, String userEmail, String userPassword,String phoneNumber){
+    public User(String username, String userEmail, String userPassword,String phoneNumber) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -25,11 +25,11 @@ public class User{
             statement.execute(sql);
 
             connection.close();
-        } catch (Exception e) {
-
-            System.out.println(e);
+        } catch (SQLException e) {
+            printSQLException(e);
         }
     }
+
     public boolean userSignIn(String uPassword,String email){
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
@@ -52,6 +52,8 @@ public class User{
             // Process the result set
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                this.userID = Integer.parseInt(resultSet.getString("userID"));
+                this.username=resultSet.getString("username");
                 return true;
             }
 
@@ -82,5 +84,9 @@ public class User{
 
     public int getuserID(){
         return userID;
+    }
+
+    public String getUsername(){
+        return username;
     }
 }

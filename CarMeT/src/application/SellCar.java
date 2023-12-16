@@ -12,7 +12,7 @@ public class SellCar {
 	String vin;
 	String description;
     int carMakeID;
-    public SellCar(int userID,String carMake, String color, String odometer,String price,String vin,String description){
+    public SellCar(int userID,String carMake, String color, String odometer,String price,String vin,String description)throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -25,13 +25,11 @@ public class SellCar {
             statement.execute(sql);
 
             connection.close();
-        } catch (Exception e) {
-
-            System.out.println("error in constructor");
-            e.printStackTrace();
+        } catch (SQLException e) {
+            printSQLException(e);
         }
     }
-    public void getCarMakeID(String carMake){
+    public void getCarMakeID(String carMake) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -57,13 +55,27 @@ public class SellCar {
                 
             }
 
-            if(this.carMakeID==0){
-                throw new Exception();
-            }
+            
             connection.close();
            
-        } catch (Exception e) {
-            System.out.println("error in getcarmake");
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public static void printSQLException(SQLException ex) {
+        for (Throwable e: ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
         }
     }
 }
