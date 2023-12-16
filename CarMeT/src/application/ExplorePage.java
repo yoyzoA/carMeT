@@ -18,7 +18,7 @@ public class ExplorePage {
     public ExplorePage(String carMake) {
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
         try {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
@@ -38,7 +38,7 @@ public class ExplorePage {
     public void getCarMakeID(String carMake) {
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -68,6 +68,7 @@ public class ExplorePage {
             connection.close();
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("error in getcarmake");
         }
 
