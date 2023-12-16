@@ -19,7 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ApplicationController /*implements Initializable*/{
+public class ApplicationController /* implements Initializable */ {
 
 	private Stage stage;
 	private Scene scene;
@@ -61,15 +61,15 @@ public class ApplicationController /*implements Initializable*/{
 
 	// @FXML
 	// public void initialize(URL location, ResourceBundle resources) {
-	// 	carMakeCB.getItems().addall("Audi","Bentley","BMW","Fiat","Kia","Mercedes","Tesla");
-	// 	carMakeCB.setValue("BMW");
-	// 	carMakeCB.setOnAction(this::getCarMake);
-		
+	// carMakeCB.getItems().addall("Audi","Bentley","BMW","Fiat","Kia","Mercedes","Tesla");
+	// carMakeCB.setValue("BMW");
+	// carMakeCB.setOnAction(this::getCarMake);
+
 	// }
 
 	// public void getCarMake(ActionEvent event){
-	// 	String carMakeString=carMakeCB.getValue();
-	// 	carm=carMakeString;
+	// String carMakeString=carMakeCB.getValue();
+	// carm=carMakeString;
 	// }
 
 	public void Home(ActionEvent event) throws IOException {
@@ -83,25 +83,26 @@ public class ApplicationController /*implements Initializable*/{
 	}
 
 	// public void HomeSellCar(ActionEvent event) throws IOException {
-	// 	try {
-	// 		String carMake = carm;
-	// 		String color = carColor_textfield.getText();
-	// 		String odometer = odometer_textfield.getText();
-	// 		String price = price_textfield.getText();
-	// 		String vin=vin_textfield.getText();
-	// 		String description = description_text.getText();
-	// 		Thread.sleep(1000);
-	// 		SellCar carsell = new SellCar(userID, carMake, color, odometer,price,vin,description);
-	// 	} catch (Exception e) {
-	// 		e.printStackTrace();
-	// 	}
-	// 	Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-	// 	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	// 	scene = new Scene(root);
-	// 	String css = this.getClass().getResource("HomePage.css").toExternalForm();
-	// 	scene.getStylesheets().add(css);
-	// 	stage.setScene(scene);
-	// 	stage.show();
+	// try {
+	// String carMake = carm;
+	// String color = carColor_textfield.getText();
+	// String odometer = odometer_textfield.getText();
+	// String price = price_textfield.getText();
+	// String vin=vin_textfield.getText();
+	// String description = description_text.getText();
+	// Thread.sleep(1000);
+	// SellCar carsell = new SellCar(userID, carMake, color,
+	// odometer,price,vin,description);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+	// stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	// scene = new Scene(root);
+	// String css = this.getClass().getResource("HomePage.css").toExternalForm();
+	// scene.getStylesheets().add(css);
+	// stage.setScene(scene);
+	// stage.show();
 	// }
 
 	public void SignOut(ActionEvent event) throws IOException {
@@ -136,6 +137,7 @@ public class ApplicationController /*implements Initializable*/{
 		scene.getStylesheets().add(css);
 		stage.setScene(scene);
 		stage.show();
+
 	}
 
 	public void HomeSignedIn(ActionEvent event) throws IOException {
@@ -148,14 +150,14 @@ public class ApplicationController /*implements Initializable*/{
 				String password = password_passwordfield.getText();
 				user.userSignIn(username, password, email);
 				userID = user.getuserID();
-				System.out.println("please this "+userID);
+				System.out.println("please this " + userID);
 				Thread.sleep(1000);
 
 				if (userID == 0) {
 					return;
 				} else {
-					
-					System.out.println("please this "+userID);
+
+					System.out.println("please this " + userID);
 					break;
 				}
 
@@ -254,5 +256,4 @@ public class ApplicationController /*implements Initializable*/{
 		stage.show();
 	}
 
-	
 }
