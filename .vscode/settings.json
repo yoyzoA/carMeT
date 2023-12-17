@@ -10,7 +10,15 @@
             "c:\\Users\\yorgo\\Downloads\\javafx-sdk-17.0.9\\lib\\javafx.swing.jar",
             "c:\\Users\\yorgo\\Downloads\\javafx-sdk-17.0.9\\lib\\javafx.web.jar",
             "c:\\Users\\yorgo\\Downloads\\javafx-sdk-17.0.9\\lib\\javafx-swt.jar",
-            "CarMeT/lib/mysql-connector-java-8.0.25.jar"
+            "CarMeT/lib/mysql-connector-java-8.0.25.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.base.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.controls.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.fxml.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.graphics.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.media.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.swing.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx.web.jar",
+            "c:\\Program Files\\Java\\javafx-sdk-21.0.1\\lib\\javafx-swt.jar"
         ],
         "exclude": [
             "c:\\Users\\yorgo\\Downloads\\openjfx-21_windows-x64_bin-sdk\\javafx-sdk-21\\lib\\javafx-swt.jar",
