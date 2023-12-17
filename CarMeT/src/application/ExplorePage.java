@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+
 public class ExplorePage {
 
     String carMake;
@@ -18,7 +21,7 @@ public class ExplorePage {
     public ExplorePage(String carMake) {
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
         try {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
@@ -38,7 +41,7 @@ public class ExplorePage {
     public void getCarMakeID(String carMake) {
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
