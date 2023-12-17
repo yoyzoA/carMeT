@@ -12,7 +12,7 @@ public class SellCar {
 	String vin;
 	String description;
     int carMakeID;
-    public SellCar(int userID,String carMake, String color, String odometer,String price,String vin,String description)throws SQLException{
+    public SellCar(int userID,String carMake, String color, String odometer,String price,String vin,String description,String carModel)throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -20,7 +20,7 @@ public class SellCar {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
             System.out.println("------------------"+userID);
-            getCarMakeID(carMake);
+            getCarMakeID(carMake,carModel);
             String sql = "INSERT INTO CAR (userID,carMakeID,color,price,vin,carDescription,odometer) VALUES ("+userID+","+carMakeID+",\'"+color+"\',"+price+",\""+vin+"\",\'"+description+"\',"+odometer+");";
             statement.execute(sql);
 
@@ -29,7 +29,7 @@ public class SellCar {
             printSQLException(e);
         }
     }
-    public void getCarMakeID(String carMake) throws SQLException{
+    public void getCarMakeID(String carMake, String carModel) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
@@ -41,7 +41,7 @@ public class SellCar {
 
             try {
             connection = DriverManager.getConnection(url, username0, password);
-            String sql = "SELECT carMakeID FROM carMake WHERE makename IN (\""+carMake+"\");";
+            String sql = "SELECT carMakeID FROM carMake WHERE makename IN (\""+carMake+"\") AND model IN (\'"+carModel+"\');";
             preparedStatement = connection.prepareStatement(sql);
 
             // Execute the query and get the result set
