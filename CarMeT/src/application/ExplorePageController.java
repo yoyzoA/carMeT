@@ -103,6 +103,7 @@ public class ExplorePageController {
     }
 
     public void ExploreBMW(ActionEvent event) throws IOException {
+
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "root";
@@ -149,6 +150,10 @@ public class ExplorePageController {
         for (int i = 0; i < carIDList.size(); i++) {
             Button bmwButton = new Button("carID:" + carIDList.get(i));
             buttonList.add(bmwButton);
+            bmwButton.setStyle("-fx-background-color: #D3D3D3;");
+            bmwButton.setPrefSize(200, 200);
+            bmwButton.setOnMouseEntered(e -> bmwButton.setStyle("-fx-background-color: #FFFF00;"));
+            bmwButton.setOnMouseExited(e -> bmwButton.setStyle("-fx-background-color: #D3D3D3;"));
             // Add the button to the center of the GridPane
             gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
             gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
