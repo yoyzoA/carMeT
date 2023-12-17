@@ -1,0 +1,7 @@
+.check-box-list-cell {
+    -fx-graphic: url('check-box-unchecked.png');
+}
+
+.check-box-list-cell:selected {
+    -fx-graphic: url('check-box-checked.png');
+}

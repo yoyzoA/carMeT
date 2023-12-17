@@ -26,12 +26,13 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="76.0" prefWidth="388.0" style="-fx-background-color: white;">
                      <children>
-                        <Text fx:id="username_text4" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car Make" wrappingWidth="161.291015625">
+                        <Text fx:id="username_text4" layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car make and model" wrappingWidth="161.291015625">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="carMakeCB" layoutX="31.0" layoutY="26.0" opacity="0.5" prefHeight="26.0" prefWidth="314.0" />
+                        <ChoiceBox fx:id="carMakeCB" layoutX="31.0" layoutY="26.0" prefHeight="26.0" prefWidth="161.0" />
+                        <ChoiceBox fx:id="modelBox" layoutX="224.0" layoutY="27.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="65.0" prefWidth="388.0" style="-fx-background-color: white;">
@@ -81,8 +82,13 @@
                               <Font name="Consolas Bold" size="14.0" />
                            </font>
                         </Text>
-                        <TextArea fx:id="description_text" layoutX="29.0" layoutY="51.0" prefHeight="154.0" prefWidth="306.0" />
-                        <Button layoutX="267.0" layoutY="239.0" mnemonicParsing="false" onAction="#HomeSellCar" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Sell">
+                        <TextArea fx:id="description_text" layoutX="29.0" layoutY="51.0" prefHeight="96.0" prefWidth="306.0" />
+                        <Button layoutX="272.0" layoutY="182.0" mnemonicParsing="false" onAction="#HomeSellCar" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Sell">
+                           <font>
+                              <Font name="Consolas Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="33.0" layoutY="180.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Back">
                            <font>
                               <Font name="Consolas Bold" size="13.0" />
                            </font>

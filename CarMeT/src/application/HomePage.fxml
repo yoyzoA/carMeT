@@ -185,7 +185,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1289.0" prefWidth="1218.0" style="-fx-background-color: white;">
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox layoutX="49.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="-49.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <AnchorPane prefHeight="339.0" prefWidth="1218.0">
                                              <children>
