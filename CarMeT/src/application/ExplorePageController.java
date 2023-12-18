@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.IntegerBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -102,21 +103,46 @@ public class ExplorePageController {
         stage.show();
     }
 
-    public void ExploreBMW(ActionEvent event) throws IOException {
+    public void Explore(ActionEvent event) throws IOException {
+        gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "root";
 
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
+        String makeName = "";
+        ArrayList<String> makeNameList = new ArrayList<>();
+        String model = "";
+        ArrayList<String> modelList = new ArrayList<>();
+        String color = "";
+        ArrayList<String> colorList = new ArrayList<>();
+        int odometer = 0;
+        ArrayList<Integer> odometerList = new ArrayList<>();
+        int price = 0;
+        ArrayList<Integer> priceList = new ArrayList<>();
+        String vinNb = "";
+        ArrayList<String> vinNbList = new ArrayList<>();
+        String carDesc = "";
+        ArrayList<String> carDescList = new ArrayList<>();
+        String userName = "";
+        ArrayList<String> userNameList = new ArrayList<>();
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        Object source = event.getSource();
+        String buttonText = "";
+
+        if (source instanceof Button) {
+            Button clickedButton = (Button) source;
+            buttonText = clickedButton.getText();
+        }
 
         try {
             connection = DriverManager.getConnection(url, username0, password);
-            String sql = "SELECT carID FROM car WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = 'Toyota'); ";
+            String sql = "SELECT * FROM car NATURAL JOIN carmake NATURAL JOIN user WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
+                    + buttonText + "\"); ";
             preparedStatement = connection.prepareStatement(sql);
 
             // Execute the query and get the result set
@@ -127,6 +153,30 @@ public class ExplorePageController {
                 // Retrieve values from the result set
                 carID = Integer.parseInt(resultSet.getString("carID"));
                 carIDList.add(carID);
+
+                makeName = resultSet.getString("makeName");
+                makeNameList.add(makeName);
+
+                price = Integer.parseInt(resultSet.getString("price"));
+                priceList.add(price);
+
+                model = resultSet.getString("model");
+                modelList.add(model);
+
+                vinNb = resultSet.getString("vin");
+                vinNbList.add(vinNb);
+
+                odometer = Integer.parseInt(resultSet.getString("odometer"));
+                odometerList.add(odometer);
+
+                carDesc = resultSet.getString("carDescription");
+                carDescList.add(carDesc);
+
+                color = resultSet.getString("color");
+                colorList.add(color);
+
+                userName = resultSet.getString("username");
+                userNameList.add(userName);
 
             }
 
@@ -147,8 +197,18 @@ public class ExplorePageController {
         ArrayList<Button> buttonList = new ArrayList<>();
 
         for (int i = 0; i < carIDList.size(); i++) {
-            Button bmwButton = new Button("carID:" + carIDList.get(i));
+            Button bmwButton = new Button("Owned By: " + userNameList.get(i) + '\n' + "Price: $" + priceList.get(i)
+                    + '\n' + "Make: " + makeNameList.get(i) + '\n'
+                    + "Model: " + modelList.get(i) + '\n'
+                    + "VIN: " + vinNbList.get(i) + '\n'
+                    + "Odometer: " + odometerList.get(i) + '\n'
+                    + "Description: " + carDescList.get(i) + '\n'
+                    + "Color: " + colorList.get(i));
             buttonList.add(bmwButton);
+            bmwButton.setStyle("-fx-background-color: #D3D3D3;");
+            bmwButton.setPrefSize(200, 200);
+            bmwButton.setOnMouseEntered(e -> bmwButton.setStyle("-fx-background-color: #FFFF00;"));
+            bmwButton.setOnMouseExited(e -> bmwButton.setStyle("-fx-background-color: #D3D3D3;"));
             // Add the button to the center of the GridPane
             gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
             gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
