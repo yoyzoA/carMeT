@@ -12,24 +12,24 @@ import javafx.stage.Window;
 public class ConfirmPageController {
     Preferences userPreferences = Preferences.userRoot();
     @FXML
-    private Label bmwLabelText;
+    private Label buyButtonLabelText;
 
     @FXML
     private Button confirmButton;
 
-    public void setBMWLabelText(String text) {
-        bmwLabelText.setText(text);
+    public void setBuyButtonLabelText(String text) {
+        buyButtonLabelText.setText(text);
     }
 
     @FXML
     private void confirmButtonAction(ActionEvent event) {
 
-        // Window owner = confirmButton.getScene().getWindow();
-        // if (userPreferences.getInt("userID", 0) == 0) {
-        // showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-        // "Please Login to your account");
-        // return;
-        // }
+        Window owner = confirmButton.getScene().getWindow();
+        if (userPreferences.getInt("userID", 0) == 0) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Please Login to your account");
+            return;
+        }
         // Handle the confirmation action here
         System.out.println("Confirmed!");
         // You can close the stage or perform any other necessary actions

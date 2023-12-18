@@ -219,7 +219,7 @@ public class ExplorePageController {
 
                         // Access the ConfirmPageController to set the BMW button text
                         ConfirmPageController confirmController = loader.getController();
-                        confirmController.setBMWLabelText(buyButton.getText());
+                        confirmController.setBuyButtonLabelText(buyButton.getText());
 
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
