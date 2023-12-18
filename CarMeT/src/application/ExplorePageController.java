@@ -144,8 +144,8 @@ public class ExplorePageController implements Initializable {
         ArrayList<String> partNameList = new ArrayList<>();
         String partDesc = "";
         ArrayList<String> partDescList = new ArrayList<>();
-        int partPrice = 0;
-        ArrayList<Integer> partPriceList = new ArrayList<>();
+        double partPrice = 0;
+        ArrayList<Double> partPriceList = new ArrayList<>();
         int supplierID = 0;
         ArrayList<Integer> supplierIDList = new ArrayList<>();
 
@@ -267,8 +267,8 @@ public class ExplorePageController implements Initializable {
             gridPane.getChildren().clear();
             try {
                 connection = DriverManager.getConnection(url, username0, password);
-                String sql = "SELECT * FROM part NATURAL JOIN CARMAKE NATURAL JOIN WORKSON WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
-                        + buttonText + "\") AND PARTID NOT IN (SELECT PARTID FROM PARTORDER)";
+                String sql = "SELECT * FROM part NATURAL JOIN CARMAKE NATURAL JOIN WORKSON WHERE  makeName = \""
+                        + buttonText + "\" AND PARTID NOT IN (SELECT PARTID FROM PARTORDER)";
                 preparedStatement = connection.prepareStatement(sql);
 
                 // Execute the query and get the result set
@@ -283,7 +283,7 @@ public class ExplorePageController implements Initializable {
                     partName = resultSet.getString("name");
                     partNameList.add(partName);
 
-                    partPrice = Integer.parseInt(resultSet.getString("price"));
+                    partPrice = Double.parseDouble(resultSet.getString("price"));
                     partPriceList.add(partPrice);
 
                     partDesc = resultSet.getString("description");
@@ -306,7 +306,7 @@ public class ExplorePageController implements Initializable {
                 System.out.println("error in getcarmake");
             }
 
-            // System.out.println(Arrays.toString(carIDList.toArray()));
+            System.out.println(Arrays.toString(partPriceList.toArray()));
 
             ArrayList<Button> buttonList = new ArrayList<>();
 
@@ -324,7 +324,7 @@ public class ExplorePageController implements Initializable {
                     public void handle(ActionEvent event) {
                         try {
                             // Load the Confirm.fxml file
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPartPage.fxml"));
                             Parent root = loader.load();
 
                             // Access the ConfirmPageController to set the button text
