@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import javafx.beans.binding.IntegerBinding;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -197,18 +198,42 @@ public class ExplorePageController {
         ArrayList<Button> buttonList = new ArrayList<>();
 
         for (int i = 0; i < carIDList.size(); i++) {
-            Button bmwButton = new Button("Owned By: " + userNameList.get(i) + '\n' + "Price: $" + priceList.get(i)
+            Button buyButton = new Button("Owned By: " + userNameList.get(i) + '\n' + "Price: $" + priceList.get(i)
                     + '\n' + "Make: " + makeNameList.get(i) + '\n'
                     + "Model: " + modelList.get(i) + '\n'
                     + "VIN: " + vinNbList.get(i) + '\n'
                     + "Odometer: " + odometerList.get(i) + '\n'
                     + "Description: " + carDescList.get(i) + '\n'
                     + "Color: " + colorList.get(i));
-            buttonList.add(bmwButton);
-            bmwButton.setStyle("-fx-background-color: #D3D3D3;");
-            bmwButton.setPrefSize(200, 200);
-            bmwButton.setOnMouseEntered(e -> bmwButton.setStyle("-fx-background-color: #FFFF00;"));
-            bmwButton.setOnMouseExited(e -> bmwButton.setStyle("-fx-background-color: #D3D3D3;"));
+            buttonList.add(buyButton);
+            buyButton.setStyle("-fx-background-color: #D3D3D3;");
+            buyButton.setPrefSize(200, 200);
+
+            buyButton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        // Load the Confirm.fxml file
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
+                        Parent root = loader.load();
+
+                        // Access the ConfirmPageController to set the BMW button text
+                        ConfirmPageController confirmController = loader.getController();
+                        confirmController.setBMWLabelText(buyButton.getText());
+
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+
+                        // Show the ConfirmPage.fxml page
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
+            buyButton.setOnMouseExited(e -> buyButton.setStyle("-fx-background-color: #D3D3D3;"));
             // Add the button to the center of the GridPane
             gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
             gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
@@ -219,4 +244,5 @@ public class ExplorePageController {
         System.out.println("bmwtest");
         // bmw.getCarMakeID("Toyota");
     }
+
 }
