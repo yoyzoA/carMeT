@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +48,11 @@ public class SignUpController {
         if (emailSignup_textfield.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "Please enter your email");
+            return;
+        }
+        if(!isValidEmail(emailSignup_textfield.getText())){
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Please enter a valid email");
             return;
         }
         if (passwordSignup_passwordfield.getText().isEmpty()) {
@@ -94,5 +101,15 @@ public class SignUpController {
         alert.setContentText(message);
         alert.initOwner(owner);
         alert.show();
+    }
+
+    private final String EMAIL_REGEX =
+            "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
+
+    private final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
+
+    public boolean isValidEmail(String email) {
+        Matcher matcher = EMAIL_PATTERN.matcher(email);
+        return matcher.matches();
     }
 }
