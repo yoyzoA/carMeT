@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfirmPageController">
     <StackPane layoutX="0.0" layoutY="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label fx:id="bmwLabelText" text="Your Label Text Here" StackPane.alignment="CENTER" style="-fx-font-size: 14; -fx-font-family: 'Consolas';" />
+        <Label fx:id="buyButtonLabelText" text="Your Label Text Here" StackPane.alignment="CENTER" style="-fx-font-size: 14; -fx-font-family: 'Consolas';" />
     </StackPane>
 
     <!-- Confirm button -->

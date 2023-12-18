@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "JDBClass",
+      "request": "launch",
+      "mainClass": "application.JDBClass",
+      "projectName": "carMeT-1_38e6a8cb"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "application.Main",
