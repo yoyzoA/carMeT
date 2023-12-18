@@ -117,7 +117,7 @@ public class ExplorePageController implements Initializable {
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "root";
-
+        // attributes of car
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
         String makeName = "";
@@ -137,6 +137,18 @@ public class ExplorePageController implements Initializable {
         String userName = "";
         ArrayList<String> userNameList = new ArrayList<>();
 
+        // attributes of part
+        int partID = 0;
+        ArrayList<Integer> partIDList = new ArrayList<>();
+        String partName = "";
+        ArrayList<String> partNameList = new ArrayList<>();
+        String partDesc = "";
+        ArrayList<String> partDescList = new ArrayList<>();
+        int partPrice = 0;
+        ArrayList<Integer> partPriceList = new ArrayList<>();
+        int supplierID = 0;
+        ArrayList<Integer> supplierIDList = new ArrayList<>();
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -148,106 +160,197 @@ public class ExplorePageController implements Initializable {
             buttonText = clickedButton.getText();
         }
 
-        try {
-            connection = DriverManager.getConnection(url, username0, password);
-            String sql = "SELECT * FROM car NATURAL JOIN carmake NATURAL JOIN user WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
-                    + buttonText + "\") AND CARID NOT IN (SELECT CARID FROM CARORDER)";
-            preparedStatement = connection.prepareStatement(sql);
+        if (comboBoxValue.equals("Cars")) {
+            gridPane.getChildren().clear();
+            try {
+                connection = DriverManager.getConnection(url, username0, password);
+                String sql = "SELECT * FROM car NATURAL JOIN carmake NATURAL JOIN user WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
+                        + buttonText + "\") AND CARID NOT IN (SELECT CARID FROM CARORDER)";
+                preparedStatement = connection.prepareStatement(sql);
 
-            // Execute the query and get the result set
-            resultSet = preparedStatement.executeQuery();
+                // Execute the query and get the result set
+                resultSet = preparedStatement.executeQuery();
 
-            // Process the result set
-            while (resultSet.next()) {
-                // Retrieve values from the result set
-                carID = Integer.parseInt(resultSet.getString("carID"));
-                carIDList.add(carID);
+                // Process the result set
+                while (resultSet.next()) {
+                    // Retrieve values from the result set
+                    carID = Integer.parseInt(resultSet.getString("carID"));
+                    carIDList.add(carID);
 
-                makeName = resultSet.getString("makeName");
-                makeNameList.add(makeName);
+                    makeName = resultSet.getString("makeName");
+                    makeNameList.add(makeName);
 
-                price = Integer.parseInt(resultSet.getString("price"));
-                priceList.add(price);
+                    price = Integer.parseInt(resultSet.getString("price"));
+                    priceList.add(price);
 
-                model = resultSet.getString("model");
-                modelList.add(model);
+                    model = resultSet.getString("model");
+                    modelList.add(model);
 
-                vinNb = resultSet.getString("vin");
-                vinNbList.add(vinNb);
+                    vinNb = resultSet.getString("vin");
+                    vinNbList.add(vinNb);
 
-                odometer = Integer.parseInt(resultSet.getString("odometer"));
-                odometerList.add(odometer);
+                    odometer = Integer.parseInt(resultSet.getString("odometer"));
+                    odometerList.add(odometer);
 
-                carDesc = resultSet.getString("carDescription");
-                carDescList.add(carDesc);
+                    carDesc = resultSet.getString("carDescription");
+                    carDescList.add(carDesc);
 
-                color = resultSet.getString("color");
-                colorList.add(color);
+                    color = resultSet.getString("color");
+                    colorList.add(color);
 
-                userName = resultSet.getString("username");
-                userNameList.add(userName);
+                    userName = resultSet.getString("username");
+                    userNameList.add(userName);
 
-            }
-
-            if (carID == 0) {
-
-                throw new Exception();
-            }
-
-            connection.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("error in getcarmake");
-        }
-
-        // System.out.println(Arrays.toString(carIDList.toArray()));
-
-        ArrayList<Button> buttonList = new ArrayList<>();
-
-        for (int i = 0; i < carIDList.size(); i++) {
-            Button buyButton = new Button("Owned By: " + userNameList.get(i) + '\n' + "Price: $" + priceList.get(i)
-                    + '\n' + "Make: " + makeNameList.get(i) + '\n'
-                    + "Model: " + modelList.get(i) + '\n'
-                    + "VIN: " + vinNbList.get(i) + '\n'
-                    + "Odometer: " + odometerList.get(i) + '\n'
-                    + "Description: " + carDescList.get(i) + '\n'
-                    + "Color: " + colorList.get(i));
-            buttonList.add(buyButton);
-            buyButton.setStyle("-fx-background-color: #D3D3D3;");
-            buyButton.setPrefSize(200, 200);
-
-            buyButton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        // Load the Confirm.fxml file
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
-                        Parent root = loader.load();
-
-                        // Access the ConfirmPageController to set the button text
-                        ConfirmPageController confirmController = loader.getController();
-                        confirmController.setBuyButtonLabelText(buyButton.getText());
-
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root));
-
-                        // Show the ConfirmPage.fxml page
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
-            });
 
-            buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
-            buyButton.setOnMouseExited(e -> buyButton.setStyle("-fx-background-color: #D3D3D3;"));
+                if (carID == 0) {
 
-            // Add the button to the center of the GridPane
-            gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
-            gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
-            gridPane.getChildren().add(buttonList.get(i));
+                    throw new Exception();
+                }
 
+                connection.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("error in getcarmake");
+            }
+
+            // System.out.println(Arrays.toString(carIDList.toArray()));
+
+            ArrayList<Button> buttonList = new ArrayList<>();
+
+            for (int i = 0; i < carIDList.size(); i++) {
+                Button buyButton = new Button("Owned By: " + userNameList.get(i) + '\n' + "Price: $" + priceList.get(i)
+                        + '\n' + "Make: " + makeNameList.get(i) + '\n'
+                        + "Model: " + modelList.get(i) + '\n'
+                        + "VIN: " + vinNbList.get(i) + '\n'
+                        + "Odometer: " + odometerList.get(i) + '\n'
+                        + "Description: " + carDescList.get(i) + '\n'
+                        + "Color: " + colorList.get(i));
+                buttonList.add(buyButton);
+                buyButton.setStyle("-fx-background-color: #D3D3D3;");
+                buyButton.setPrefSize(200, 200);
+
+                buyButton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            // Load the Confirm.fxml file
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
+                            Parent root = loader.load();
+
+                            // Access the ConfirmPageController to set the button text
+                            ConfirmPageController confirmController = loader.getController();
+                            confirmController.setBuyButtonLabelText(buyButton.getText());
+
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(root));
+
+                            // Show the ConfirmPage.fxml page
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
+                buyButton.setOnMouseExited(e -> buyButton.setStyle("-fx-background-color: #D3D3D3;"));
+
+                // Add the button to the center of the GridPane
+                gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
+                gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
+                gridPane.getChildren().add(buttonList.get(i));
+
+            }
+        } else if (comboBoxValue.equals("Parts")) {
+            gridPane.getChildren().clear();
+            try {
+                connection = DriverManager.getConnection(url, username0, password);
+                String sql = "SELECT * FROM part NATURAL JOIN CARMAKE NATURAL JOIN WORKSON WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
+                        + buttonText + "\") AND PARTID NOT IN (SELECT PARTID FROM PARTORDER)";
+                preparedStatement = connection.prepareStatement(sql);
+
+                // Execute the query and get the result set
+                resultSet = preparedStatement.executeQuery();
+
+                // Process the result set
+                while (resultSet.next()) {
+                    // Retrieve values from the result set
+                    partID = Integer.parseInt(resultSet.getString("partID"));
+                    partIDList.add(partID);
+
+                    partName = resultSet.getString("name");
+                    partNameList.add(partName);
+
+                    partPrice = Integer.parseInt(resultSet.getString("price"));
+                    partPriceList.add(partPrice);
+
+                    partDesc = resultSet.getString("description");
+                    partDescList.add(partDesc);
+
+                    supplierID = Integer.parseInt(resultSet.getString("supplierID"));
+                    supplierIDList.add(supplierID);
+
+                }
+
+                if (carID == 0) {
+
+                    throw new Exception();
+                }
+
+                connection.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("error in getcarmake");
+            }
+
+            // System.out.println(Arrays.toString(carIDList.toArray()));
+
+            ArrayList<Button> buttonList = new ArrayList<>();
+
+            for (int i = 0; i < partIDList.size(); i++) {
+                Button buyButton = new Button(
+                        "Owned By: " + supplierIDList.get(i) + '\n' + "Price: $" + partPriceList.get(i)
+                                + '\n' + "Name: " + partNameList.get(i) + '\n'
+                                + "Description: " + partDescList.get(i) + '\n');
+                buttonList.add(buyButton);
+                buyButton.setStyle("-fx-background-color: #D3D3D3;");
+                buyButton.setPrefSize(200, 200);
+
+                buyButton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            // Load the Confirm.fxml file
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
+                            Parent root = loader.load();
+
+                            // Access the ConfirmPageController to set the button text
+                            ConfirmPageController confirmController = loader.getController();
+                            confirmController.setBuyButtonLabelText(buyButton.getText());
+
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(root));
+
+                            // Show the ConfirmPage.fxml page
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
+                buyButton.setOnMouseExited(e -> buyButton.setStyle("-fx-background-color: #D3D3D3;"));
+
+                // Add the button to the center of the GridPane
+                gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
+                gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
+                gridPane.getChildren().add(buttonList.get(i));
+
+            }
         }
     }
 
