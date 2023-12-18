@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javafx.beans.binding.IntegerBinding;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,13 +22,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ExplorePageController {
+public class ExplorePageController implements Initializable {
     private Stage stage;
     private Scene scene;
     public Parent root;
@@ -35,12 +38,12 @@ public class ExplorePageController {
     private GridPane gridPane;
 
     @FXML
-    private void initialize() {
-        // Other initialization code can be added here
-    }
+    private ComboBox<String> partsOrCarCB;
 
     @FXML
     ApplicationController appc = new ApplicationController();
+
+    String comboBoxValue = "";
 
     public void Home(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -104,6 +107,11 @@ public class ExplorePageController {
         stage.show();
     }
 
+    public void comboxChoice(ActionEvent event) throws IOException {
+        comboBoxValue = partsOrCarCB.getValue();
+
+    }
+
     public void Explore(ActionEvent event) throws IOException {
         gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
@@ -143,7 +151,7 @@ public class ExplorePageController {
         try {
             connection = DriverManager.getConnection(url, username0, password);
             String sql = "SELECT * FROM car NATURAL JOIN carmake NATURAL JOIN user WHERE carMakeID IN ( SELECT carMakeID FROM carmake where makeName = \""
-                    + buttonText + "\"); ";
+                    + buttonText + "\") AND CARID NOT IN (SELECT CARID FROM CARORDER)";
             preparedStatement = connection.prepareStatement(sql);
 
             // Execute the query and get the result set
@@ -217,7 +225,7 @@ public class ExplorePageController {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmPage.fxml"));
                         Parent root = loader.load();
 
-                        // Access the ConfirmPageController to set the BMW button text
+                        // Access the ConfirmPageController to set the button text
                         ConfirmPageController confirmController = loader.getController();
                         confirmController.setBuyButtonLabelText(buyButton.getText());
 
@@ -234,15 +242,17 @@ public class ExplorePageController {
 
             buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
             buyButton.setOnMouseExited(e -> buyButton.setStyle("-fx-background-color: #D3D3D3;"));
+
             // Add the button to the center of the GridPane
             gridPane.setRowIndex(buttonList.get(i), 0); // Set the row index
             gridPane.setColumnIndex(buttonList.get(i), i); // Set the column index
             gridPane.getChildren().add(buttonList.get(i));
 
         }
-
-        System.out.println("bmwtest");
-        // bmw.getCarMakeID("Toyota");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        partsOrCarCB.getItems().addAll("Parts", "Cars");
+    }
 }
