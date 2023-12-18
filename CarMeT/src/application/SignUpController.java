@@ -1,6 +1,10 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,36 +39,41 @@ public class SignUpController {
     @FXML
     Button next_button;
 
-    public void HomeSignUp(ActionEvent event) throws IOException,SQLException {
+    public void HomeSignUp(ActionEvent event) throws IOException, SQLException {
         try {
             Window owner = next_button.getScene().getWindow();
 
             if (usernameSignup_textfield.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter your username");
-            return;
-        }
-
-        if (emailSignup_textfield.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter your email");
-            return;
-        }
-        if(!isValidEmail(emailSignup_textfield.getText())){
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter a valid email");
-            return;
-        }
-        if (passwordSignup_passwordfield.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter a password");
-            return;
-        }
-        if (phonenumberSignup_textfield.getText().isEmpty() || !phonenumberSignup_textfield.getText().matches("\\d+")) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter a phone Number");
-            return;
-        }
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter your username");
+                return;
+            }
+            if (!isUsernameUnique(usernameSignup_textfield.getText())) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "username already in use");
+                return;
+            }
+            if (emailSignup_textfield.getText().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter your email");
+                return;
+            }
+            if (!isValidEmail(emailSignup_textfield.getText())) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter a valid email");
+                return;
+            }
+            if (passwordSignup_passwordfield.getText().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter a password");
+                return;
+            }
+            if (phonenumberSignup_textfield.getText().isEmpty()
+                    || !phonenumberSignup_textfield.getText().matches("\\d+")) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter a phone Number");
+                return;
+            }
 
             String username = usernameSignup_textfield.getText();
             String email = emailSignup_textfield.getText();
@@ -103,13 +112,38 @@ public class SignUpController {
         alert.show();
     }
 
-    private final String EMAIL_REGEX =
-            "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
+    private final String EMAIL_REGEX = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
 
     private final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
 
     public boolean isValidEmail(String email) {
         Matcher matcher = EMAIL_PATTERN.matcher(email);
         return matcher.matches();
+    }
+
+    public boolean isUsernameUnique(String username) {
+        String url = "jdbc:mysql://localhost:3306/carMeT";
+        String username0 = "root";
+        String password = "151204";
+        String query = "SELECT COUNT(*) FROM USER WHERE username = ?";
+        try (
+            Connection connection = DriverManager.getConnection(url, username0, password);
+           
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count == 0; // If count is 0, the username is unique
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately (e.g., logging, throwing a custom exception)
+        }
+        return false;
     }
 }
