@@ -50,7 +50,7 @@ public class ConfirmPartPageController {
 
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;

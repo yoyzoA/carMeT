@@ -116,7 +116,7 @@ public class ExplorePageController implements Initializable {
         gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
         // attributes of car
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
@@ -294,7 +294,7 @@ public class ExplorePageController implements Initializable {
 
                 }
 
-                if (carID == 0) {
+                if (partID == 0) {
 
                     throw new Exception();
                 }
@@ -328,7 +328,7 @@ public class ExplorePageController implements Initializable {
                             Parent root = loader.load();
 
                             // Access the ConfirmPageController to set the button text
-                            ConfirmPageController confirmController = loader.getController();
+                            ConfirmPartPageController confirmController = loader.getController();
                             confirmController.setBuyButtonLabelText(buyButton.getText());
 
                             Stage stage = new Stage();
