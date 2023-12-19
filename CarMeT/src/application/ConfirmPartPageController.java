@@ -40,7 +40,7 @@ public class ConfirmPartPageController {
 
         LocalDate today = LocalDate.now();
         String status = "Ordered";
-        int price = extractPrice(buyButtonLabelText.getText());
+        double price = extractPrice(buyButtonLabelText.getText());
         int userID = userPreferences.getInt("userID", 0);
         String supplierName = extractOwner(buyButtonLabelText.getText());
 
@@ -133,13 +133,13 @@ public class ConfirmPartPageController {
         alert.show();
     }
 
-    public static int extractPrice(String input) {
-        Pattern pattern = Pattern.compile("Price: \\$(\\d+)");
+    public static double extractPrice(String input) {
+        Pattern pattern = Pattern.compile("Price: \\$([0-9]+(?:\\.[0-9]+)?)");
         Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
             String priceString = matcher.group(1);
-            return Integer.parseInt(priceString);
+            return Double.parseDouble(priceString);
         } else {
             return -1;
         }
