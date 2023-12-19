@@ -48,7 +48,6 @@ public class ReviewController  {
     SellPart partsell = new SellPart();
     Preferences userPreferences = Preferences.userRoot();
     int userID = userPreferences.getInt("userID", 0);
-    // List<String> suppliers = LeaveReview.getSuppliersForUser(userID) ;
     ApplicationController appc = new ApplicationController();
 
     int sliderValue;
@@ -91,33 +90,6 @@ public class ReviewController  {
 
     }
 
-    // private List<String> getSuppliersForUser(int userId) throws SQLException{
-    // String url = "jdbc:mysql://localhost:3306/carMeT";
-    // String username0 = "root";
-    // String password = "151204";
-    // List<String> suppliers = new ArrayList<>();
-
-    // try (Connection connection = DriverManager.getConnection(url, username0,
-    // password);
-    // PreparedStatement preparedStatement = connection.prepareStatement("SELECT
-    // DISTINCT s.username FROM USER s " +
-    // "JOIN CARORDER o ON s.user_id = o.supplier_id " +
-    // "WHERE o.customer_id = userID")) {
-
-    // preparedStatement.setInt(1, userID);
-    // ResultSet resultSet = preparedStatement.executeQuery();
-
-    // while (resultSet.next()) {
-    // String supplier=resultSet.getString("name");
-    // suppliers.add(supplier);
-    // }
-
-    // } catch (SQLException e) {
-    // printSQLException(e);
-    // }
-    // return suppliers;
-
-    // }
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -137,11 +109,6 @@ public class ReviewController  {
         stage.show();
     }
 
-    // @Override
-    // public void initialize(URL location, ResourceBundle resources) {
-    //     mySlider.valueProperty().addListener(
-    //             (observable, oldValue, newValue) -> valueLabel.setText("Selected Value: " + newValue.intValue()));
-    // }
 
     public static void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
