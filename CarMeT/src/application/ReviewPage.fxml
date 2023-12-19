@@ -52,7 +52,7 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <Slider layoutX="163.0" layoutY="15.0" max="5" prefHeight="14.0" prefWidth="198.0" />
+                        <Slider fx:id="mySlider" layoutX="163.0" layoutY="15.0" max="5" prefHeight="14.0" prefWidth="198.0" showTickLabels="true" showTickMarks="true" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="322.0" prefWidth="380.0" style="-fx-background-color: white;">

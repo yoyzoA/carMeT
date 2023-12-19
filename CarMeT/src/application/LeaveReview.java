@@ -6,35 +6,44 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.prefs.Preferences;
 
 public class LeaveReview {
     int reviewID;
     int supplierID;
     Double rating;
-    String comment;
+    String comments;
     String Supplier_Username;
+    Preferences userPreferences= Preferences.userRoot();
+    int userID=userPreferences.getInt("userID", 0);
 
-    public LeaveReview (String supplier, double rating, String comments) throws SQLException{
-        String url = "jdbc:mysql://localhost:3306/carMeT";
-        String username0 = "root";
-        String password = "151204";
+    String url = "jdbc:mysql://localhost:3306/carMeT";
+    String username0 = "root";
+    String password = "151204";
 
+    public LeaveReview (String supplier,double rating, String comments) throws SQLException{
+        
+        this.rating=rating;
+        this.comments=comments;
+        this.Supplier_Username=supplier;
         try {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
-            String sql = "INSERT INTO REVIEW (rating,comment,reviewDate,supplierID) VALUES ("+rating+",\""+comment+"\",\""+java.time.LocalDate.now()+"\","+supplierID+");";
+            String sql = "INSERT INTO REVIEW (rating,comment,reviewDate) VALUES ("+rating+",\""+comments+"\",\""+java.time.LocalDate.now()+"\");";
             statement.execute(sql);
-            System.out.println("------------------"+supplier);
-            getSupplierID(Supplier_Username);
+            
             connection.close();
+            getSupplierID(supplier);
+            getMessageID(comments, rating);
+            leaves(this.userID,this.reviewID,this.supplierID);
         } catch (SQLException e) {
             printSQLException(e);
         }
     }
     public void getSupplierID(String supplier_name) throws SQLException{
-        String url = "jdbc:mysql://localhost:3306/carMeT";
-        String username0 = "root";
-        String password = "151204";
+        
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -54,6 +63,7 @@ public class LeaveReview {
                 
             }
 
+
             
             connection.close();
            
@@ -61,6 +71,64 @@ public class LeaveReview {
             printSQLException(e);
         }
     }
+
+    public void getMessageID(String comments, Double rating){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+            try {
+            connection = DriverManager.getConnection(url, username0, password);
+            String sql = "SELECT reviewID FROM REVIEW WHERE comments=\""+comments+"\" AND rating="+rating+";";
+            preparedStatement = connection.prepareStatement(sql);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                this.supplierID= Integer.parseInt(resultSet.getString("supplierID"));
+                System.out.println("------------------"+supplierID);
+                
+            }
+
+            
+            connection.close();
+           
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public void leaves(int userID, int reviewID, int SupplierID){
+
+    }
+
+    public static List<String> getSuppliersForUser(int userID) throws SQLException{
+        String url = "jdbc:mysql://localhost:3306/carMeT";
+        String username0 = "root";
+        String password = "151204";
+         List<String> suppliers = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(url, username0, password);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT s.username FROM USER s " +
+                     "JOIN CARORDER o ON s.user_id = o.supplier_id " +
+                     "WHERE o.customer_id = userID")) {
+
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String supplier=resultSet.getString("name");
+                suppliers.add(supplier);
+            }
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return suppliers;
+
+    }
+
     public static void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {

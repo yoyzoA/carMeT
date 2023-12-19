@@ -9,10 +9,10 @@ USE carmet;
 -- Accessing the DB 
 CREATE TABLE IF NOT EXISTS USER (
   userID MEDIUMINT NOT NULL AUTO_INCREMENT,
-  username UNIQUE VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL,
   userEmail VARCHAR(320) NOT NULL,
   userPassword VARCHAR(100) NOT NULL,
-  registrationDate DATE DEFAULT GETDATE(),
+  registrationDate DATE,
   phoneNumber DECIMAL(11, 0) CHECK(
     phoneNumber BETWEEN 1 AND 99999999999
   ),
@@ -62,9 +62,7 @@ CREATE TABLE IF NOT EXISTS REVIEW (
   ),
   comment VARCHAR(200),
   reviewDate DATE,
-  supplierID MEDIUMINT,
-  PRIMARY KEY (reviewID),
-  FOREIGN KEY (supplierID) REFERENCES USER(userID)
+  PRIMARY KEY (reviewID)
 );
 CREATE TABLE IF NOT EXISTS WORKSON (
   partID MEDIUMINT,

@@ -10,15 +10,16 @@ public class User {
     String userPassword;
     String registrationDate;
     int phoneNumber;
+    String url = "jdbc:mysql://localhost:3306/carMeT";
+        String username0 = "root";
+        String password = "151204";
 
     public User() {
 
     }
 
     public User(String username, String userEmail, String userPassword, String phoneNumber) throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/carMeT";
-        String username0 = "root";
-        String password = "root";
+        
         try {
             Connection connection = DriverManager.getConnection(url, username0, password);
             Statement statement = connection.createStatement();
@@ -35,9 +36,7 @@ public class User {
     }
 
     public boolean userSignIn(String uPassword, String email) {
-        String url = "jdbc:mysql://localhost:3306/carMeT";
-        String username0 = "root";
-        String password = "root";
+        
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;

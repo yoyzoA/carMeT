@@ -26,13 +26,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class ReviewController implements Initializable  {
+public class ReviewController implements Initializable {
 	@FXML
 	TextField Supplier;
 	@FXML
@@ -48,11 +49,24 @@ public class ReviewController implements Initializable  {
 	SellPart partsell=new SellPart();
     Preferences userPreferences = Preferences.userRoot();
     int userID = userPreferences.getInt("userID", 0);
-	List<String> suppliers = getSuppliersForUser(userID);
+	// List<String> suppliers = LeaveReview.getSuppliersForUser(userID) ;
 	ApplicationController appc = new ApplicationController();   
     
+    @FXML
+    private Slider mySlider;
 
-    public void submitReview(ActionEvent event) throws IOException {
+    @FXML
+    private Label valueLabel;  // Assuming you have a Label for displaying the selected value
+    
+    // public void initialize() {
+    //     // Bind the label text to the slider value
+    //     mySlider.valueProperty().addListener((observable, oldValue, newValue) ->
+    //             valueLabel.setText("Selected Value: " + newValue.intValue())
+    //     );
+    // }
+
+    public void submitReview(ActionEvent event) throws IOException,SQLException {
+        List<String> suppliers = LeaveReview.getSuppliersForUser(userID);
         Window owner = submitButton.getScene().getWindow();
         if(suppliers.contains(Supplier.getText())){
 		try {
@@ -60,7 +74,7 @@ public class ReviewController implements Initializable  {
 			String reviewText = Comments.getText();
             double rating = Rating.getValue();
 			Thread.sleep(1000);
-			LeaveReview review = new LeaveReview(supplier_username, rating, reviewText);
+			LeaveReview review = new LeaveReview(supplier_username,5, reviewText);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,32 +94,31 @@ public class ReviewController implements Initializable  {
         
 	}
 
-    private List<String> getSuppliersForUser(int userId) {
-        String url = "jdbc:mysql://localhost:3306/carMeT";
-        String username0 = "root";
-        String password = "151204";
-         List<String> suppliers = new ArrayList<>();
+    // private List<String> getSuppliersForUser(int userId) throws SQLException{
+    //     String url = "jdbc:mysql://localhost:3306/carMeT";
+    //     String username0 = "root";
+    //     String password = "151204";
+    //      List<String> suppliers = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(url, username0, password);
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT s.username FROM USER s " +
-                     "JOIN CARORDER o ON s.user_id = o.supplier_id " +
-                     "WHERE o.customer_id = userID")) {
+    //     try (Connection connection = DriverManager.getConnection(url, username0, password);
+    //          PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT s.username FROM USER s " +
+    //                  "JOIN CARORDER o ON s.user_id = o.supplier_id " +
+    //                  "WHERE o.customer_id = userID")) {
 
-            preparedStatement.setInt(1, userID);
-            ResultSet resultSet = preparedStatement.executeQuery();
+    //         preparedStatement.setInt(1, userID);
+    //         ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                String supplier=resultSet.getString("name");
-                suppliers.add(supplier);
-            }
+    //         while (resultSet.next()) {
+    //             String supplier=resultSet.getString("name");
+    //             suppliers.add(supplier);
+    //         }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle the exception appropriately in your application
-        }
-        return suppliers;
+    //     } catch (SQLException e) {
+    //         printSQLException(e);
+    //     }
+    //     return suppliers;
 
-    }
+    // }
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -126,8 +139,25 @@ public class ReviewController implements Initializable  {
 	}
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initialize'");
+    public void initialize(URL location, ResourceBundle resources) {
+        mySlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                valueLabel.setText("Selected Value: " + newValue.intValue())
+        );
     }
+    public static void printSQLException(SQLException ex) {
+        for (Throwable e: ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
+        }
+    }
+
 }
