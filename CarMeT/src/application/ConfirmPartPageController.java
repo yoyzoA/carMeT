@@ -51,7 +51,7 @@ public class ConfirmPartPageController {
 
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -61,36 +61,36 @@ public class ConfirmPartPageController {
 
         try {
             connection = DriverManager.getConnection(url, username0, password);
-            today=LocalDate.now();
+            today = LocalDate.now();
             String sql = "INSERT INTO ORDERS (date, status, totalAmount) VALUES (\"" + today + "\", \"" + status
                     + "\",\"" + price + "\")";
             preparedStatement = connection.prepareStatement(sql);
 
             result = preparedStatement.executeUpdate();
-            String sql2 = "SELECT orderID FROM orders WHERE date=\'"+today+"\' AND totalAmount="+price+";";
+            String sql2 = "SELECT orderID FROM orders WHERE date=\'" + today + "\' AND totalAmount=" + price + ";";
             preparedStatement = connection.prepareStatement(sql2);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-            // supplierID = Integer.parseInt(resultSet.getString("userID"));
-            // partID = Integer.parseInt(resultSet.getString("partID"));
-            orderID = Integer.parseInt(resultSet.getString("orderID"));
+                // supplierID = Integer.parseInt(resultSet.getString("userID"));
+                // partID = Integer.parseInt(resultSet.getString("partID"));
+                orderID = Integer.parseInt(resultSet.getString("orderID"));
             }
 
             String sql3 = "SELECT supplierID,partID FROM PART NATURAL JOIN USER WHERE userName = \""
-            + supplierName
-            + "\" AND description = \"" + Description + "\" ";
+                    + supplierName
+                    + "\" AND description = \"" + Description + "\" ";
             preparedStatement = connection.prepareStatement(sql3);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-            supplierID = Integer.parseInt(resultSet.getString("supplierID"));
-            partID = Integer.parseInt(resultSet.getString("partID"));
-            //orderID = Integer.parseInt(resultSet.getString("orderID"));
+                supplierID = Integer.parseInt(resultSet.getString("supplierID"));
+                partID = Integer.parseInt(resultSet.getString("partID"));
+                // orderID = Integer.parseInt(resultSet.getString("orderID"));
             }
 
             String sql4 = "INSERT INTO PARTORDER (customerID, supplierID, partID, orderID)"
-            +"VALUES (\"" + userID + "\", \""
-            + supplierID
-            + "\",\"" + partID + "\",\"" + orderID + "\")";
+                    + "VALUES (\"" + userID + "\", \""
+                    + supplierID
+                    + "\",\"" + partID + "\",\"" + orderID + "\")";
             preparedStatement = connection.prepareStatement(sql4);
 
             result = preparedStatement.executeUpdate();
