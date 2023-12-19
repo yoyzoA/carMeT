@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="400.0" style="-fx-background-color: #434343;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ApplicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="400.0" style="-fx-background-color: #434343;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReviewController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -42,7 +42,7 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="160.0" layoutY="14.0" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
+                        <TextField fx:id="Supplier" layoutX="160.0" layoutY="14.0" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: transparent; -fx-border-color: transparent transparent grey transparent; -fx-border-style: none none solid none; -fx-border-width: 0 0 1 0;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="171.0" prefHeight="70.0" prefWidth="380.0" style="-fx-background-color: white;">
@@ -52,7 +52,7 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <Slider fx:id="mySlider" layoutX="163.0" layoutY="15.0" max="5" prefHeight="14.0" prefWidth="198.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="mySlider" layoutX="163.0" layoutY="15.0" majorTickUnit="1.0" max="5" minorTickCount="0" onMouseReleased="#onSliderChanged" prefHeight="14.0" prefWidth="198.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="322.0" prefWidth="380.0" style="-fx-background-color: white;">
@@ -62,8 +62,8 @@
                               <Font name="Consolas Bold" size="14.0" />
                            </font>
                         </Text>
-                        <TextArea layoutX="29.0" layoutY="30.0" prefHeight="175.0" prefWidth="305.0" />
-                        <Button layoutX="269.0" layoutY="228.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Submit">
+                        <TextArea fx:id="Comments" layoutX="29.0" layoutY="30.0" prefHeight="175.0" prefWidth="305.0" />
+                        <Button fx:id="submitButton" layoutX="269.0" layoutY="228.0" mnemonicParsing="false" onAction="#submitReview" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffc107;" text="Submit">
                            <font>
                               <Font name="Consolas Bold" size="13.0" />
                            </font>
