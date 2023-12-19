@@ -116,7 +116,7 @@ public class ExplorePageController implements Initializable {
         gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
         // attributes of car
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
@@ -146,8 +146,8 @@ public class ExplorePageController implements Initializable {
         ArrayList<String> partDescList = new ArrayList<>();
         double partPrice = 0;
         ArrayList<Double> partPriceList = new ArrayList<>();
-        int supplierID = 0;
-        ArrayList<Integer> supplierIDList = new ArrayList<>();
+        String supplierName = "";
+        ArrayList<String> supplierNameList = new ArrayList<>();
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -267,7 +267,7 @@ public class ExplorePageController implements Initializable {
             gridPane.getChildren().clear();
             try {
                 connection = DriverManager.getConnection(url, username0, password);
-                String sql = "SELECT * FROM part NATURAL JOIN CARMAKE NATURAL JOIN WORKSON WHERE  makeName = \""
+                String sql = "SELECT p.partID,name,price,description, s.username FROM part p , user s, carmake c, workson w where s.userID = p.supplierID AND w.partID = p.partID AND c.carmakeID =w.carmakeID and makeName = \""
                         + buttonText + "\" AND PARTID NOT IN (SELECT PARTID FROM PARTORDER)";
                 preparedStatement = connection.prepareStatement(sql);
 
@@ -289,8 +289,8 @@ public class ExplorePageController implements Initializable {
                     partDesc = resultSet.getString("description");
                     partDescList.add(partDesc);
 
-                    supplierID = Integer.parseInt(resultSet.getString("supplierID"));
-                    supplierIDList.add(supplierID);
+                    supplierName = resultSet.getString("username");
+                    supplierNameList.add(supplierName);
 
                 }
 
@@ -312,7 +312,7 @@ public class ExplorePageController implements Initializable {
 
             for (int i = 0; i < partIDList.size(); i++) {
                 Button buyButton = new Button(
-                        "Owned By: " + supplierIDList.get(i) + '\n' + "Price: $" + partPriceList.get(i)
+                        "Owned By: " + supplierNameList.get(i) + '\n' + "Price: $" + partPriceList.get(i)
                                 + '\n' + "Name: " + partNameList.get(i) + '\n'
                                 + "Description: " + partDescList.get(i) + '\n');
                 buttonList.add(buyButton);

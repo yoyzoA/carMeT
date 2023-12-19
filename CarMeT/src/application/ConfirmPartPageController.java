@@ -50,7 +50,7 @@ public class ConfirmPartPageController {
 
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -64,9 +64,10 @@ public class ConfirmPartPageController {
                     + "\",\"" + price + "\")";
             preparedStatement = connection.prepareStatement(sql);
 
-            result = preparedStatement.executeUpdate();
-            // String sql2 = "SELECT userID, carID, orderID FROM USER NATURAL JOIN ORDERS
-            // NATURAL JOIN CAR WHERE userName = \""
+            // result = preparedStatement.executeUpdate();
+            // String sql2 = "SELECT userID, carID, orderID FROM USER NATURAL JOIN orders o
+            // ,part p , user s, carmake c, workson w where s.userID = p.supplierID AND
+            // w.partID = p.partID AND c.carmakeID =w.carmakeID and userName = \""
             // + supplierName
             // + "\" AND vin = \"" + vin + "\" ";
             // preparedStatement = connection.prepareStatement(sql2);
