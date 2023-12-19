@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -29,13 +30,27 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
+import java.util.prefs.Preferences;
 
 public class ExplorePageController implements Initializable {
     private Stage stage;
     private Scene scene;
     public Parent root;
+
+    Preferences userPreferences = Preferences.userRoot();
+
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private HBox carPurchasesHBox;
+    @FXML
+    Button Sell_Button;
+
+    @FXML
+    private HBox partPurchasesHBox;
 
     @FXML
     private ComboBox<String> partsOrCarCB;
@@ -65,6 +80,13 @@ public class ExplorePageController implements Initializable {
     }
 
     public void MyPurchases(ActionEvent event) throws IOException {
+
+        Window owner = Sell_Button.getScene().getWindow();
+        if (userPreferences.getInt("userID", 0) == 0) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Please Login to your account");
+            return;
+        }
         root = FXMLLoader.load(getClass().getResource("MyPurchasesPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -116,7 +138,7 @@ public class ExplorePageController implements Initializable {
         gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "151204";
+        String password = "root";
         // attributes of car
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
@@ -320,6 +342,7 @@ public class ExplorePageController implements Initializable {
                 buyButton.setPrefSize(200, 200);
 
                 buyButton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
                     @Override
                     public void handle(ActionEvent event) {
                         try {
@@ -340,6 +363,7 @@ public class ExplorePageController implements Initializable {
                             e.printStackTrace();
                         }
                     }
+
                 });
 
                 buyButton.setOnMouseEntered(e -> buyButton.setStyle("-fx-background-color: #FFFF00;"));
@@ -357,5 +381,14 @@ public class ExplorePageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         partsOrCarCB.getItems().addAll("Parts", "Cars");
+    }
+
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
     }
 }
