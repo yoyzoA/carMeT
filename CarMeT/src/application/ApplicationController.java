@@ -2,15 +2,24 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,9 +27,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -29,7 +40,8 @@ import java.sql.*;
 
 public class ApplicationController /* implements Initializable */ {
 
-	Preferences userPreferences = Preferences.userRoot();
+	Preferences userPreferences=Preferences.userRoot();
+	
 
 	private Stage stage;
 	private Scene scene;
@@ -45,7 +57,20 @@ public class ApplicationController /* implements Initializable */ {
 	@FXML
 	private HBox partPurchasesHBox;
 	@FXML
-	private HBox carPurchasesHBox;
+	private HBox carPurchasesHBox;	@FXML
+	HBox userHBox;
+
+	// @Override
+	// public void initialize(URL location, ResourceBundle resources) {
+	// 	List<String> userList = fetchUserListFromDatabase();
+
+    //     for (String user : userList) {
+    //         Label userLabel = new Label(user);
+    //         userHBox.getChildren().add(userLabel);
+	// 	}
+	// }
+
+
 
 	public void Home(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -195,4 +220,45 @@ public class ApplicationController /* implements Initializable */ {
 		alert.showAndWait();
 	}
 
+	private List<String> fetchUserListFromDatabase() {
+        String url = "jdbc:mysql://localhost:3306/carMeT";
+        String username0 = "root";
+        String password = "151204";
+        List<String> users = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(url, username0, password);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT username from user;")) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String supplier=resultSet.getString("username");
+                users.add(supplier);
+            }
+
+            
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        
+        return users;
+	}
+	public static void printSQLException(SQLException ex) {
+        for (Throwable e: ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
+        }
+    }
+
+	
 }

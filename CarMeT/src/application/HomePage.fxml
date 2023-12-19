@@ -221,7 +221,7 @@
                                                          <children>
                                                             <AnchorPane layoutX="14.0" prefHeight="29.0" prefWidth="1174.0" style="-fx-background-color: #FFC107;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="10.0">
                                                                <children>
-                                                                  <Text fill="#434343" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Best Seller in Cars " wrappingWidth="292.8671875">
+                                                                  <Text fill="#434343" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users" wrappingWidth="292.8671875">
                                                                      <font>
                                                                         <Font name="Consolas Bold" size="25.0" />
                                                                      </font>
@@ -234,7 +234,7 @@
                                                          <children>
                                                             <AnchorPane layoutX="13.0" prefHeight="152.0" prefWidth="1205.0" style="-fx-background-color: #434343;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="0.0">
                                                                <children>
-                                                                  <HBox prefHeight="75.0" prefWidth="79.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                                  <HBox fx:id="userHBox" prefHeight="75.0" prefWidth="79.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                      <children>
                                                                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                                            <children>
