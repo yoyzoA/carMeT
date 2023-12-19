@@ -64,19 +64,19 @@ public class ConfirmPartPageController {
                     + "\",\"" + price + "\")";
             preparedStatement = connection.prepareStatement(sql);
 
-            // result = preparedStatement.executeUpdate();
-            // String sql2 = "SELECT userID, carID, orderID FROM USER NATURAL JOIN orders o
-            // ,part p , user s, carmake c, workson w where s.userID = p.supplierID AND
-            // w.partID = p.partID AND c.carmakeID =w.carmakeID and userName = \""
-            // + supplierName
-            // + "\" AND vin = \"" + vin + "\" ";
-            // preparedStatement = connection.prepareStatement(sql2);
-            // resultSet = preparedStatement.executeQuery();
-            // while (resultSet.next()) {
-            // supplierID = Integer.parseInt(resultSet.getString("userID"));
-            // carID = Integer.parseInt(resultSet.getString("carID"));
-            // orderID = Integer.parseInt(resultSet.getString("orderID"));
-            // }
+            result = preparedStatement.executeUpdate();
+            String sql2 = "SELECT userID, carID, orderID FROM USER NATURAL JOIN orders o
+            ,part p , user s, carmake c, workson w where s.userID = p.supplierID AND
+            w.partID = p.partID AND c.carmakeID =w.carmakeID and userName = \""
+            + supplierName
+            + "\" AND vin = \"" + vin + "\" ";
+            preparedStatement = connection.prepareStatement(sql2);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            supplierID = Integer.parseInt(resultSet.getString("userID"));
+            carID = Integer.parseInt(resultSet.getString("carID"));
+            orderID = Integer.parseInt(resultSet.getString("orderID"));
+            }
 
             // String sql3 = "INSERT INTO CARORDER (customerID, supplierID, carID, orderID)
             // VALUES (\"" + userID + "\", \""
