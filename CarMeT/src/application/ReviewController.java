@@ -33,90 +33,89 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class ReviewController implements Initializable {
-	@FXML
-	TextField Supplier;
-	@FXML
-	Slider Rating;
-	@FXML
-	TextArea Comments;
+public class ReviewController  {
+    @FXML
+    TextField Supplier;
+
+    @FXML
+    TextArea Comments;
     @FXML
     Button submitButton;
 
     private Stage stage;
-	private Scene scene;
-	public Parent root;
-	SellPart partsell=new SellPart();
+    private Scene scene;
+    public Parent root;
+    SellPart partsell = new SellPart();
     Preferences userPreferences = Preferences.userRoot();
     int userID = userPreferences.getInt("userID", 0);
-	// List<String> suppliers = LeaveReview.getSuppliersForUser(userID) ;
-	ApplicationController appc = new ApplicationController();   
+    // List<String> suppliers = LeaveReview.getSuppliersForUser(userID) ;
+    ApplicationController appc = new ApplicationController();
+
+    int sliderValue;
     
     @FXML
     private Slider mySlider;
 
     @FXML
-    private Label valueLabel;  // Assuming you have a Label for displaying the selected value
-    
-    // public void initialize() {
-    //     // Bind the label text to the slider value
-    //     mySlider.valueProperty().addListener((observable, oldValue, newValue) ->
-    //             valueLabel.setText("Selected Value: " + newValue.intValue())
-    //     );
-    // }
+    public void onSliderChanged() {
+        sliderValue = (int) mySlider.getValue();
+        System.out.println(sliderValue + " ");
+    }
 
-    public void submitReview(ActionEvent event) throws IOException,SQLException {
+    public void submitReview(ActionEvent event) throws IOException, SQLException {
         List<String> suppliers = LeaveReview.getSuppliersForUser(userID);
+        System.out.println(suppliers.toString());
         Window owner = submitButton.getScene().getWindow();
-        if(suppliers.contains(Supplier.getText())){
-		try {
-			String supplier_username= Supplier.getText();
-			String reviewText = Comments.getText();
-            double rating = Rating.getValue();
-			Thread.sleep(1000);
-			LeaveReview review = new LeaveReview(supplier_username,5, reviewText);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		String css = this.getClass().getResource("HomePage.css").toExternalForm();
-		scene.getStylesheets().add(css);
-		stage.setScene(scene);
-		stage.show();}
-        else{
-            showAlert(Alert.AlertType.ERROR,owner, "Form Error!",
-                            "Please enter a valid supplier username");
-                    return;
+        if (suppliers.contains(Supplier.getText())) {
+            try {
+                String supplier_username = Supplier.getText();
+                String reviewText = Comments.getText();
+                // double rating = Rating.getValue();
+                Thread.sleep(1000);
+                LeaveReview review = new LeaveReview(supplier_username, 5, reviewText);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            String css = this.getClass().getResource("HomePage.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Please enter a valid supplier username");
+            return;
         }
 
-        
-	}
+    }
 
     // private List<String> getSuppliersForUser(int userId) throws SQLException{
-    //     String url = "jdbc:mysql://localhost:3306/carMeT";
-    //     String username0 = "root";
-    //     String password = "151204";
-    //      List<String> suppliers = new ArrayList<>();
+    // String url = "jdbc:mysql://localhost:3306/carMeT";
+    // String username0 = "root";
+    // String password = "151204";
+    // List<String> suppliers = new ArrayList<>();
 
-    //     try (Connection connection = DriverManager.getConnection(url, username0, password);
-    //          PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT s.username FROM USER s " +
-    //                  "JOIN CARORDER o ON s.user_id = o.supplier_id " +
-    //                  "WHERE o.customer_id = userID")) {
+    // try (Connection connection = DriverManager.getConnection(url, username0,
+    // password);
+    // PreparedStatement preparedStatement = connection.prepareStatement("SELECT
+    // DISTINCT s.username FROM USER s " +
+    // "JOIN CARORDER o ON s.user_id = o.supplier_id " +
+    // "WHERE o.customer_id = userID")) {
 
-    //         preparedStatement.setInt(1, userID);
-    //         ResultSet resultSet = preparedStatement.executeQuery();
+    // preparedStatement.setInt(1, userID);
+    // ResultSet resultSet = preparedStatement.executeQuery();
 
-    //         while (resultSet.next()) {
-    //             String supplier=resultSet.getString("name");
-    //             suppliers.add(supplier);
-    //         }
+    // while (resultSet.next()) {
+    // String supplier=resultSet.getString("name");
+    // suppliers.add(supplier);
+    // }
 
-    //     } catch (SQLException e) {
-    //         printSQLException(e);
-    //     }
-    //     return suppliers;
+    // } catch (SQLException e) {
+    // printSQLException(e);
+    // }
+    // return suppliers;
 
     // }
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
@@ -128,24 +127,24 @@ public class ReviewController implements Initializable {
         alert.show();
     }
 
-	public void Home(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		String css = this.getClass().getResource("HomePage.css").toExternalForm();
-		scene.getStylesheets().add(css);
-		stage.setScene(scene);
-		stage.show();
-	}
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        mySlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                valueLabel.setText("Selected Value: " + newValue.intValue())
-        );
+    public void Home(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        String css = this.getClass().getResource("HomePage.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
     }
+
+    // @Override
+    // public void initialize(URL location, ResourceBundle resources) {
+    //     mySlider.valueProperty().addListener(
+    //             (observable, oldValue, newValue) -> valueLabel.setText("Selected Value: " + newValue.intValue()));
+    // }
+
     public static void printSQLException(SQLException ex) {
-        for (Throwable e: ex) {
+        for (Throwable e : ex) {
             if (e instanceof SQLException) {
                 e.printStackTrace(System.err);
                 System.err.println("SQLState: " + ((SQLException) e).getSQLState());

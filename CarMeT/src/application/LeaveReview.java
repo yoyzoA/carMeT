@@ -58,7 +58,7 @@ public class LeaveReview {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                this.supplierID= Integer.parseInt(resultSet.getString("supplierID"));
+                this.supplierID= Integer.parseInt(resultSet.getString("userID"));
                 System.out.println("------------------"+supplierID);
                 
             }
@@ -80,13 +80,13 @@ public class LeaveReview {
 
             try {
             connection = DriverManager.getConnection(url, username0, password);
-            String sql = "SELECT reviewID FROM REVIEW WHERE comments=\""+comments+"\" AND rating="+rating+";";
+            String sql = "SELECT reviewID FROM REVIEW WHERE comment=\""+comments+"\" AND rating="+rating+";";
             preparedStatement = connection.prepareStatement(sql);
 
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                this.supplierID= Integer.parseInt(resultSet.getString("supplierID"));
+                this.reviewID= Integer.parseInt(resultSet.getString("reviewID"));
                 System.out.println("------------------"+supplierID);
                 
             }
@@ -100,31 +100,44 @@ public class LeaveReview {
     }
 
     public void leaves(int userID, int reviewID, int SupplierID){
-
+        try {
+            Connection connection = DriverManager.getConnection(url, username0, password);
+            Statement statement = connection.createStatement();
+            String sql = "INSERT INTO leaves (customerID,reviewID,supplierID) VALUES ("+userID+","+reviewID+","+supplierID+");";
+            statement.execute(sql);
+            
+            connection.close();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 
     public static List<String> getSuppliersForUser(int userID) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
         String password = "151204";
-         List<String> suppliers = new ArrayList<>();
+        List<String> suppliers = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(url, username0, password);
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT s.username FROM USER s " +
-                     "JOIN CARORDER o ON s.user_id = o.supplier_id " +
-                     "WHERE o.customer_id = userID")) {
+                     "JOIN CARORDER o ON s.userID = o.supplierID " +
+                     "WHERE o.customerID= "+userID+" UNION SELECT DISTINCT s.username FROM USER s " +
+                     "JOIN PARTORDER p ON s.userID = p.supplierID " +
+                     "WHERE p.customerID= "+userID+";")) {
 
-            preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                String supplier=resultSet.getString("name");
+                String supplier=resultSet.getString("username");
                 suppliers.add(supplier);
             }
+
+            
 
         } catch (SQLException e) {
             printSQLException(e);
         }
+        
         return suppliers;
 
     }
