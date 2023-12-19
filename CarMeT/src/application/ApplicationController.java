@@ -83,102 +83,19 @@ public class ApplicationController /* implements Initializable */ {
 	}
 
 	public void MyPurchases(ActionEvent event) throws IOException {
-		// Window owner = Sell_Button.getScene().getWindow();
-		// if (userPreferences.getInt("userID", 0) == 0) {
-		// showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-		// "Please Login to your account");
-		// return;
-		// }
-
-		carPurchasesHBox.getChildren().clear();
-		String url = "jdbc:mysql://localhost:3306/carMeT";
-		String username0 = "root";
-		String password = "root";
-		int customerID = userPreferences.getInt("userID", 0);
-
-		// attributes of carOrder
-
-		int orderID = 0;
-		ArrayList<Integer> orderIDList = new ArrayList<>();
-		String supplierName = "";
-		ArrayList<String> supplierNameList = new ArrayList<>();
-		int carID = 0;
-		ArrayList<Integer> carIDList = new ArrayList<>();
-		int price = 0;
-		ArrayList<Integer> priceList = new ArrayList<>();
-
-		// attributes of part
-
-		String partName = "";
-		ArrayList<String> partNameList = new ArrayList<>();
-		String partDesc = "";
-		ArrayList<String> partDescList = new ArrayList<>();
-		double partPrice = 0;
-		ArrayList<Double> partPriceList = new ArrayList<>();
-		String supplierNameP = "";
-		ArrayList<String> supplierNameListP = new ArrayList<>();
-
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		try {
-			connection = DriverManager.getConnection(url, username0, password);
-			String sql = "SELECT po.orderID, po.partID, p.name,p.Description,p.price,u.userName from part p , user u, partorder po , orders o where po.orderID = o.orderID and p.partID=po.partID and u.userID=po.supplierID and po.customerID=\""
-					+ customerID + "\"";
-			preparedStatement = connection.prepareStatement(sql);
-
-			// Execute the query and get the result set
-			resultSet = preparedStatement.executeQuery();
-
-			// Process the result set
-			while (resultSet.next()) {
-				// Retrieve values from the result set
-				orderID = Integer.parseInt(resultSet.getString("orderID"));
-				orderIDList.add(carID);
-
-				partName = resultSet.getString("name");
-				partNameList.add(partName);
-
-				partDesc = resultSet.getString("Description");
-				partDescList.add(partDesc);
-
-				partPrice = Double.parseDouble(resultSet.getString("price"));
-				partPriceList.add(partPrice);
-
-				supplierNameP = resultSet.getString("userName");
-				supplierNameListP.add(supplierNameP);
-
-			}
-
-			// if (carID == 0) {
-
-			// throw new Exception();
-			// }
-
-			connection.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("error in getcarmake");
+		Window owner = Sell_Button.getScene().getWindow();
+		if (userPreferences.getInt("userID", 0) == 0) {
+			showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+					"Please Login to your account");
+			return;
 		}
-
-		ArrayList<Button> buttonList = new ArrayList<>();
-
-		for (int i = 0; i < orderIDList.size(); i++) {
-			Button buyButton = new Button(
-					"Sold by: " + supplierNameListP.get(i) + '\n' + "Price: $" + partPriceList.get(i)
-							+ '\n' + "Part Name: " + partNameList.get(i) + '\n'
-							+ "Description: " + partDescList.get(i));
-			buttonList.add(buyButton);
-			buyButton.setStyle("-fx-background-color: #D3D3D3;");
-			buyButton.setPrefSize(200, 200);
-
-			// partPurchasesHBox.getChildren().add(buttonList.get(i));
-
-		}
-
-		System.out.println(orderIDList.size());
+		root = FXMLLoader.load(getClass().getResource("MyPurchasesPage.fxml"));
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		String css = this.getClass().getResource("MyPurchases.css").toExternalForm();
+		scene.getStylesheets().add(css);
+		stage.setScene(scene);
+		stage.show();
 
 	}
 
