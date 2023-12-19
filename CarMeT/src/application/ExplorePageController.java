@@ -116,7 +116,7 @@ public class ExplorePageController implements Initializable {
         gridPane.getChildren().clear();
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
         // attributes of car
         int carID = 0;
         ArrayList<Integer> carIDList = new ArrayList<>();
@@ -267,8 +267,8 @@ public class ExplorePageController implements Initializable {
             gridPane.getChildren().clear();
             try {
                 connection = DriverManager.getConnection(url, username0, password);
-                String sql = "SELECT p.partID,name,price,description, s.username FROM part p , user s, carmake c, workson w where s.userID = p.supplierID AND w.partID = p.partID AND c.carmakeID =w.carmakeID and makeName = \""
-                        + buttonText + "\" AND PARTID NOT IN (SELECT PARTID FROM PARTORDER)";
+                String sql = "SELECT DISTINCT p.partID,name,price,description, s.username FROM part p , user s, carmake c, workson w where s.userID = p.supplierID AND w.partID = p.partID AND c.carmakeID =w.carmakeID and makeName = \""
+                        + buttonText + "\" AND p.partID NOT IN (SELECT partID FROM PARTORDER)";
                 preparedStatement = connection.prepareStatement(sql);
 
                 // Execute the query and get the result set

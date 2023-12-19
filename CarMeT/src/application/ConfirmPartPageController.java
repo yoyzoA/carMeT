@@ -38,19 +38,20 @@ public class ConfirmPartPageController {
             return;
         }
 
-        LocalDate today = LocalDate.now();
+        LocalDate today;
         String status = "Ordered";
         double price = extractPrice(buyButtonLabelText.getText());
         int userID = userPreferences.getInt("userID", 0);
         String supplierName = extractOwner(buyButtonLabelText.getText());
+        String Description = extractDescription(buyButtonLabelText.getText());
 
         int supplierID = 0;
-        int carID = 0;
+        int partID = 0;
         int orderID = 0;
 
         String url = "jdbc:mysql://localhost:3306/carMeT";
         String username0 = "root";
-        String password = "root";
+        String password = "151204";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -60,31 +61,39 @@ public class ConfirmPartPageController {
 
         try {
             connection = DriverManager.getConnection(url, username0, password);
+            today=LocalDate.now();
             String sql = "INSERT INTO ORDERS (date, status, totalAmount) VALUES (\"" + today + "\", \"" + status
                     + "\",\"" + price + "\")";
             preparedStatement = connection.prepareStatement(sql);
 
             result = preparedStatement.executeUpdate();
-            String sql2 = "SELECT userID, carID, orderID FROM USER NATURAL JOIN orders o
-            ,part p , user s, carmake c, workson w where s.userID = p.supplierID AND
-            w.partID = p.partID AND c.carmakeID =w.carmakeID and userName = \""
-            + supplierName
-            + "\" AND vin = \"" + vin + "\" ";
+            String sql2 = "SELECT orderID FROM orders WHERE date=\'"+today+"\' AND totalAmount="+price+";";
             preparedStatement = connection.prepareStatement(sql2);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-            supplierID = Integer.parseInt(resultSet.getString("userID"));
-            carID = Integer.parseInt(resultSet.getString("carID"));
+            // supplierID = Integer.parseInt(resultSet.getString("userID"));
+            // partID = Integer.parseInt(resultSet.getString("partID"));
             orderID = Integer.parseInt(resultSet.getString("orderID"));
             }
 
-            // String sql3 = "INSERT INTO CARORDER (customerID, supplierID, carID, orderID)
-            // VALUES (\"" + userID + "\", \""
-            // + supplierID
-            // + "\",\"" + carID + "\",\"" + orderID + "\")";
-            // preparedStatement = connection.prepareStatement(sql3);
+            String sql3 = "SELECT supplierID,partID FROM PART NATURAL JOIN USER WHERE userName = \""
+            + supplierName
+            + "\" AND description = \"" + Description + "\" ";
+            preparedStatement = connection.prepareStatement(sql3);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            supplierID = Integer.parseInt(resultSet.getString("supplierID"));
+            partID = Integer.parseInt(resultSet.getString("partID"));
+            //orderID = Integer.parseInt(resultSet.getString("orderID"));
+            }
 
-            // result = preparedStatement.executeUpdate();
+            String sql4 = "INSERT INTO PARTORDER (customerID, supplierID, partID, orderID)"
+            +"VALUES (\"" + userID + "\", \""
+            + supplierID
+            + "\",\"" + partID + "\",\"" + orderID + "\")";
+            preparedStatement = connection.prepareStatement(sql4);
+
+            result = preparedStatement.executeUpdate();
             connection.close();
 
         } catch (Exception e) {
@@ -148,6 +157,19 @@ public class ConfirmPartPageController {
 
     public static String extractOwner(String input) {
         String regex = "Owned By: (.+)";
+
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1);
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public static String extractDescription(String input) {
+        String regex = "Description: (.+)";
 
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(input);

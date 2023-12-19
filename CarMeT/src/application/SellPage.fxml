@@ -30,6 +30,7 @@
                   </Button>
                </children>
             </HBox>
+            <Button layoutX="157.0" layoutY="500.0" mnemonicParsing="false" onAction="#Home" text="Cancel" />
          </children>
       </AnchorPane>
    </children>
